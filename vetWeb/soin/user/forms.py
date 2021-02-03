@@ -38,7 +38,7 @@ class VetOfficerSignUpForm(UserCreationForm):
 			}
 		)
 	)
-	phone_number = forms.CharField()
+	phone_number = forms.RegexField(regex='^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$', max_length=12)
 	kvb_number = forms.CharField()
 	
 	password1 = forms.CharField(
@@ -108,7 +108,7 @@ class FarmerSignUpForm(UserCreationForm):
 			)
 		)
 	email = forms.EmailField()
-	phone_number = forms.RegexField(regex=r'^\+?1?\d{9,12}$')
+	phone_number = forms.RegexField(regex='^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$', max_length=12)
 	farm_name  = forms.CharField(max_length=20)
 	location = forms.CharField(max_length=30)
 
@@ -154,7 +154,7 @@ class StudentSignUpForm(UserCreationForm):
 			)
 		)
 	email = forms.EmailField()
-	phone_number = forms.CharField()
+	phone_number = forms.RegexField(regex='^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$', max_length=12)
 	student_number = forms.CharField(max_length=20)
 	college_name = forms.CharField(max_length=20)
 	location = forms.CharField(max_length=30)
