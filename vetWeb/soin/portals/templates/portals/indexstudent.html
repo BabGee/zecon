@@ -1,0 +1,54 @@
+{% extends 'portals/base.html' %}
+
+{% load static %}
+
+{% block title %} SoinVet|Home {% endblock %}
+
+{% block content %}
+
+<!-- =============================================== -->
+    <!-- Left side column. contains the sidebar -->
+    {% include 'portals/sidebarStudent.html' %}
+    <!-- =============================================== -->
+    <!-- Content Wrapper. Contains page content -->
+<!-- =============================================== -->
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+            <div class="panel panel-bd cardbox">
+                <div class="panel-body">
+                    <div class="statistic-box">
+                        <h2>{{ammount}}
+                        </h2>
+                    </div>
+                    <div class="items pull-left">
+                        <i class="fa fa-users fa-2x"></i>
+                        <h4>My course</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+            <div class="panel panel-bd cardbox">
+                <div class="panel-body">
+                    <div class="items pull-left">
+                        <i class="fa fa-users fa-2x"></i>
+                        <h4>Enroll course</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+            <div class="panel panel-bd cardbox">
+                <div class="panel-body">
+                    <div class="items pull-left">
+                        <i class="fa fa-users fa-2x"></i>
+                        <h4>My certifcates</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section> 
+
+{% endblock content %}    

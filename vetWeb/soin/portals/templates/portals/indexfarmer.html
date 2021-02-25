@@ -1,0 +1,89 @@
+{% extends 'portals/base.html' %}
+
+{% load static %}
+
+{% block title %} SoinVet|Home {% endblock %}
+
+{% block content %}
+
+<!-- =============================================== -->
+    <!-- Left side column. contains the sidebar -->
+    {% include 'portals/sidebarFarmer.html' %}
+    <!-- =============================================== -->
+    <!-- Content Wrapper. Contains page content -->
+<!-- =============================================== -->
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                <div class="panel panel-bd cardbox">
+                    <div class="panel-body">
+                        <div class="items pull-left">
+                            <i class="fa fa-users fa-2x"></i>
+                            <h4>Recent activities</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                <div class="panel panel-bd cardbox">
+                    <div class="panel-body">
+                        <div class="items pull-left">
+                            <i class="fa fa-users fa-2x"></i>
+                            <h4>Book services</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+                <div class="panel panel-bd cardbox">
+                    <div class="panel-body">
+                        <div class="items pull-left">
+                            <i class="fa fa-users fa-2x"></i>
+                            <h4>Uploads</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table mr-1"></i>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>KVB number</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>KVB number</th>
+                                   
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                {% for vet in all_vets %}
+                                <tr>
+                                    <td>{{vet.user.username}}</td>
+                                    <td>{{vet.user.phone_number}}</td>
+                                    <td>{{vet.kvb_number}}</td>
+                                    
+                                </tr>
+                                {% endfor %}
+                              
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    
+    </section> 
+
+{% endblock content %}    
