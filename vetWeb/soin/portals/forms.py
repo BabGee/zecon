@@ -76,17 +76,33 @@ class CalfRegistrationForm(ModelForm):
 		model = Calf_Registration_Form
 		exclude = ['vet_form', 'report_created_on',]
 
+		widgets = {
+            'date_of_birth ': DateInput(attrs={'type': 'date'}),
+			'expected_date_of_weaning': DateInput(attrs={'type': 'date'}),
+        }
+
 
 class LivestockInventoryForm(ModelForm):
 	class Meta:
 		model = Livestock_Inventory_Form
 		exclude = ['vet_form', 'report_created_on',]
 
+		widgets = {
+            'date_of_culling': DateInput(attrs={'type': 'date'}),
+        }
+
 
 class PregnancyDiagnosisForm(ModelForm):
 	class Meta:
 		model = Pregnancy_Diagnosis_Form
-		exclude = ['vet_form', 'report_created_on',]		
+		exclude = ['vet_form', 'report_created_on',]
+
+		widgets = {
+            'date_of_insemination ': DateInput(attrs={'type': 'date'}),
+			'date_of_pregnancy_diagnosis': DateInput(attrs={'type':'date'}),
+			'next_date_of_pregnancy_diagnosis' : DateInput(attrs={'type': 'date'}),
+			'expected_date_of_delivery' : DateInput(attrs={'type' : 'date'}),
+        }		
 
 class FarmConsultationForm(ModelForm):
 	class Meta:
