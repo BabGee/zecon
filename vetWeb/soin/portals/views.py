@@ -42,11 +42,11 @@ def portal_student(request):
     return render(request, 'portals/indexstudent.html', context)  
 
 
-
+@user_passes_test(vet_check, login_url='login')
 def clinical_approach(request):
     return render(request, 'portals/clinical_approach.html') 
 
-
+@user_passes_test(vet_check, login_url='login')
 def sick_approach(request):
     if request.method == "POST":
         form = SickApproachForm(request.POST)
@@ -66,7 +66,7 @@ def sick_approach(request):
          }
     return render(request, 'portals/forms.html', context) 
 
-
+@user_passes_test(vet_check, login_url='login')
 def dead_approach(request):
     if request.method == "POST":
         form = DeathApproachForm(request.POST)
@@ -86,7 +86,7 @@ def dead_approach(request):
          }
     return render(request, 'portals/forms.html', context)   
 
-
+@user_passes_test(vet_check, login_url='login')
 def surgical_approach(request):
     if request.method == "POST":
         form = SurgicalApproachForm(request.POST)
@@ -106,7 +106,7 @@ def surgical_approach(request):
          }
     return render(request, 'portals/forms.html', context) 
 
-
+@user_passes_test(vet_check, login_url='login')
 def deworming(request):
     if request.method == "POST":
         form = DewormingForm(request.POST)
@@ -126,7 +126,7 @@ def deworming(request):
          }
     return render(request, 'portals/forms.html', context)
 
-    
+@user_passes_test(vet_check, login_url='login')    
 def vaccination(request):
     if request.method == "POST":
         form = VaccinationForm(request.POST)
@@ -146,10 +146,11 @@ def vaccination(request):
          }
     return render(request, 'portals/forms.html', context)
 
-
+@user_passes_test(vet_check, login_url='login')
 def breeding_record(request):
     ...
 
+@user_passes_test(vet_check, login_url='login')
 def artificial_insemination(request):
     if request.method == "POST":
         form = ArtificialInseminationForm(request.POST)
@@ -209,7 +210,7 @@ def livestock_inventory(request):
          }
     return render(request, 'portals/farmerforms.html', context) 
 
-
+@user_passes_test(vet_check, login_url='login')
 def pregnancy_diagnosis(request):
     if request.method == "POST":
         form = PregnancyDiagnosisForm(request.POST)
@@ -228,14 +229,15 @@ def pregnancy_diagnosis(request):
         'name':'Pregnancy Diagnosis Form'
          }
     return render(request, 'portals/forms.html', context)
+ 
     
-
+@user_passes_test(vet_check, login_url='login')
 def consultation(request):
     if request.method == "POST":
         form = FarmConsultationForm(request.POST)
         if form.is_valid():
-            vet_farm_form = Vet_Forms(is_farm_consultation_form=True)
-            vet_preg_form.save() 
+            consul_form = Vet_Forms(is_farm_consultation_form=True)
+            consul_form.save() 
             form.save()
             messages.success(request, 'Details  Succesfully Saved')
             return redirect('vet-portal')    
