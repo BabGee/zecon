@@ -31,7 +31,8 @@ urlpatterns = [
     path('user/signup/student/',user_views.StudentSignUpView.as_view(),name='student_register'),
     #users login 
     path('user/login/',user_views.user_login,name='login'),
-    path('logout/',auth_views.LogoutView.as_view(template_name='user/logout.html'),name='logout'),
+    path('logout/', user_views.user_logout, name='logout'),
+    #path('logout/',auth_views.LogoutView.as_view(template_name='user/logout.html'),name='logout'),
     #users portals
     path('vet_portal/', portal_views.portal_vet, name='vet-portal'),
     path('farmer_portal/', portal_views.portal_farmer, name='farmer-portal'),

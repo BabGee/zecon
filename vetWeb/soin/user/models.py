@@ -13,7 +13,7 @@ class User(AbstractUser):
 	
 class Vet_Officer(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-	kvb_number = models.IntegerField(unique=True, null=True, blank=True)
+	kvb_number = models.CharField(max_length=10, unique=True)
 
 	def __str__(self):
 		return f'Name: {self.user.username} KVB number {self.kvb_number}'

@@ -113,7 +113,7 @@ class Vet_Forms(models.Model):
 
 class Sick_Approach_Form(models.Model):
 	vet_form = models.OneToOneField(Vet_Forms, on_delete=models.CASCADE, primary_key=True)
-	farmer_mobile_number = models.CharField(max_length=12,verbose_name='Farmer Mobile number')
+	farmer_username = models.CharField(max_length=12,verbose_name='Farmer Username')
 	species_affected = models.CharField(max_length=20, choices=SPECIES_CHOICES, default='0', verbose_name='animal species affected')
 	num_of_species_affected = models.PositiveIntegerField(verbose_name='number of species affected')
 	id_animal = models.CharField(max_length=100, verbose_name='name of the animal/identification number', null=True, blank=True)
@@ -141,13 +141,13 @@ class Sick_Approach_Form(models.Model):
 
 class Death_Approach_Form(models.Model):
 	vet_form = models.OneToOneField(Vet_Forms, on_delete=models.CASCADE, primary_key=True)
-	farmer_mobile_number = models.CharField(max_length=12,verbose_name='Farmer Mobile number')
+	farmer_username = models.CharField(max_length=12,verbose_name='Farmer Username')
 	name_of_the_animal = models.CharField(max_length=30,null=True,blank=True,verbose_name='Name or identification number')
 	sex_of_the_animal = models.CharField(max_length=20,choices=SEX_CHOICES,default='M',verbose_name='Sex of the animal')
 	num_of_species_dead = models.IntegerField(default=1,null=True,verbose_name='Number of animals dead')
 	case_history = models.CharField(max_length=100, default='When was the case reported')
 	mortality_rate = models.CharField(max_length=100, default='State the mortality rate of the case reported')
-	death_time = models.DateField(verbose_name='At what time the animal the animal/s died')
+	death_time = models.DateField(verbose_name='At what time the animal the animals died')
 	signs_of_cadever_on_the_ground = models.CharField(max_length=200,verbose_name='What are the signs of signs of the cadever on the ground')
 	carcass_opened_for_the_pm = models.CharField(max_length=5, choices=YES_NO_CHOICES,default='Y',verbose_name='Did you open up the carcass fo PM?')
 	if_yes_pathological_signs = models.CharField(max_length=100, null=True, blank=True,verbose_name='If yes,what were the signs of the pathological conditions?')
@@ -165,7 +165,7 @@ class Death_Approach_Form(models.Model):
 
 class Surgical_Approach_Form(models.Model):
 	vet_form = models.OneToOneField(Vet_Forms, on_delete=models.CASCADE, primary_key=True)
-	farmer_mobile_number = models.CharField(max_length=12,verbose_name='Farmer Mobile number', default='')
+	farmer_username = models.CharField(max_length=12,verbose_name='Farmer Username', default='')
 	species_operated_on = models.CharField(max_length=20, choices=SPECIES_CHOICES, default='0',verbose_name='Animal species naffected')
 	if_other_specify = models.CharField(max_length=100, null=True, blank=True,verbose_name='If,other specify.')
 	sex_of_the_animal = models.CharField(max_length=20,choices=SEX_CHOICES, default='M', verbose_name='Sex of the animal')
@@ -183,7 +183,7 @@ class Surgical_Approach_Form(models.Model):
 
 class Deworming_Form(models.Model):
 	vet_form = models.OneToOneField(Vet_Forms, on_delete=models.CASCADE, primary_key=True)
-	farmer_mobile_number = models.CharField(max_length=12,verbose_name='Farmer Mobile number')
+	farmer_username = models.CharField(max_length=12,verbose_name='Farmer Username')
 	species_targeted = models.CharField(max_length=20, choices=SPECIES_CHOICES, default='0',verbose_name='Species targetted')
 	number_of_adults = models.PositiveIntegerField(default=1,null=True,verbose_name='Number of adults')
 	number_of_young_ones = models.PositiveIntegerField(default=1,null=True,verbose_name='Number of young ones')
@@ -203,7 +203,7 @@ class Deworming_Form(models.Model):
 
 class Vaccination_Form(models.Model):
 	vet_form = models.OneToOneField(Vet_Forms, on_delete=models.CASCADE, primary_key=True)
-	farmer_mobile_number = models.CharField(max_length=12,verbose_name='Farmer Mobile number')
+	farmer_username = models.CharField(max_length=12,verbose_name='Farmer Username')
 	species_targeted = models.CharField(max_length=20, choices=SPECIES_CHOICES, default='0',verbose_name='Animal species targetted')
 	if_other_specify = models.CharField(max_length=100, null=True, blank=True,verbose_name='If other specify')
 	number_of_animals_vaccinated= models.IntegerField(default=1,null=True,blank=True,verbose_name='Number of animals vaccinated.')
@@ -227,7 +227,7 @@ class Vaccination_Form(models.Model):
 
 class Artificial_Insemination_Form(models.Model):
 	vet_form = models.OneToOneField(Vet_Forms, on_delete=models.CASCADE, primary_key=True)
-	farmer_mobile_number = models.CharField(max_length=12,verbose_name='Farmer Mobile number')
+	farmer_username = models.CharField(max_length=12,verbose_name='Farmer Username')
 	Name_of_the_cow = models.CharField(max_length=12,verbose_name='Name of the cow or identification number of the cow')
 	time_of_heat_sign = models.DateField(verbose_name='Time of heat sign')
 	time_of_insemination = models.DateField(verbose_name='Time of insemination')
@@ -256,7 +256,7 @@ class Artificial_Insemination_Form(models.Model):
 
 class Calf_Registration_Form(models.Model):
 	vet_form = models.OneToOneField(Vet_Forms, on_delete=models.CASCADE, primary_key=True)
-	farmer_mobile_number = models.CharField(max_length=12,verbose_name='Farmer Mobile number', default='')
+	farmer_username = models.CharField(max_length=12,verbose_name='Farmer Username', default='')
 	date_of_birth = models.DateField(verbose_name='Date of birth')
 	sex_of_the_calf = models.CharField(max_length=20, choices=SEX_CHOICES, default='M',verbose_name='Sex of the calf')
 	birth_weight = models.IntegerField(verbose_name='Birth weight')
@@ -275,7 +275,7 @@ class Calf_Registration_Form(models.Model):
 
 class Livestock_Inventory_Form(models.Model):
 	vet_form = models.OneToOneField(Vet_Forms, on_delete=models.CASCADE, primary_key=True)
-	farmer_mobile_number = models.CharField(max_length=12,verbose_name='Farmer Mobile number')
+	farmer_username = models.CharField(max_length=12,verbose_name='Farmer Username')
 	species_targeted = models.CharField(max_length=20, choices=SPECIES_CHOICES, default='0',verbose_name='Species targetted')
 	name_of_the_animal = models.CharField(max_length=30,null=True,blank=True,verbose_name='Name or identification number')
 	number_of_the_male_animals= models.IntegerField(default=1,null=True,blank=True,verbose_name='Number of male animals')
@@ -297,7 +297,7 @@ class Livestock_Inventory_Form(models.Model):
 
 class Pregnancy_Diagnosis_Form(models.Model):
 	vet_form = models.OneToOneField(Vet_Forms, on_delete=models.CASCADE, primary_key=True)
-	farmer_mobile_number = models.CharField(max_length=12,verbose_name='Farmer Mobile number')
+	farmer_username = models.CharField(max_length=12,verbose_name='Farmer Username')
 	cow_name = models.CharField(max_length=20,null=True,blank=True,verbose_name='Name or registration number of the cow')
 	cow_category = models.CharField(max_length=50,choices = COW_CATEGORY,default='H', verbose_name='Cow`s category')
 	date_of_insemination = models.DateField(verbose_name='Date of insemination')
@@ -313,7 +313,7 @@ class Pregnancy_Diagnosis_Form(models.Model):
 
 class Farm_Consultation(models.Model):
 	vet_form = models.OneToOneField(Vet_Forms, on_delete=models.CASCADE, primary_key=True)
-	farmer_mobile_number = models.CharField(max_length=12,verbose_name='Farmer Mobile number')
+	farmer_username = models.CharField(max_length=12,verbose_name='Farmer Username')
 	Dairy_cows = models.CharField(max_length=12,null=True,blank=True,verbose_name='Dairy cows unit')
 	beef_production = models.CharField(max_length=20,null=True,blank=True,verbose_name='Beef production unit')
 	poultry = models.CharField(max_length=30,null=True,blank=True,verbose_name='Poultry production unit')

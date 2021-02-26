@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import CreateView
 #from django.views.generic import View
 
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, logout
 
 from django.contrib.auth import login, authenticate
 from .models import User
@@ -78,3 +78,7 @@ def user_login(request):
     
     return render(request, 'user/login.html', {'form':form})
 
+def user_logout(request):
+    logout(request)
+    messages.success(request, 'Successfully logged out')
+    return redirect('login')
