@@ -154,7 +154,7 @@ class StudentSignUpForm(UserCreationForm):
 			)
 		)
 	email = forms.EmailField()
-	phone_number = forms.RegexField(regex=r'^\+?1?\d{9,12}$')
+	phone_number = forms.CharField()
 	student_number = forms.CharField(max_length=20)
 	college_name = forms.CharField(max_length=20)
 	location = forms.CharField(max_length=30)

@@ -4,7 +4,11 @@ from .forms import SickApproachForm, DeathApproachForm, SurgicalApproachForm, De
 from django.contrib import messages
 #from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import user_passes_test
+<<<<<<< HEAD
+from .models import Vet_Forms, Sick_Approach_Form
+=======
 from portals.models import Vet_Forms, Livestock_Inventory_Form
+>>>>>>> upstream/master
 
 
 def vet_check(request):
@@ -252,12 +256,24 @@ def consultation(request):
     return render(request, 'portals/forms.html', context)
 
 
+<<<<<<< HEAD
+def get_sick_form(request):
+    sick_forms = Sick_Approach_Form.objects.all()
+    form = Sick_Approach_Form.objects.get(farmer_username=request.user)
+
+    context = {
+        'form':form
+    }        
+
+    return render(request, 'portals/sick_form.html', context)        
+=======
 def display_images(request):
     inventory = Livestock_Inventory_Form.objects.get(farmer_username=request.user)
     context = {
         'img_obj': inventory
     }
     return render(request, 'portals/gallery.html', context)
+>>>>>>> upstream/master
 
 
 

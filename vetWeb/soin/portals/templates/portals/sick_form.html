@@ -1,0 +1,49 @@
+{% extends 'portals/base.html' %}
+
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} SoinVet|Home {% endblock %}
+
+{% block content %}
+
+<!-- =============================================== -->
+    <!-- Left side column. contains the sidebar -->
+    {% include 'portals/sidebarFarmer.html' %}
+    <!-- =============================================== -->
+    <!-- Content Wrapper. Contains page content -->
+<!-- =============================================== -->
+                
+
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-12">
+                <p>Species affected {{form.species_affected}}</p>
+                <p>Species Affected: {{form.num_of_species_affected}}</p>
+                <p>Animal ID {{form.id_animal}}</p>
+                <p>Disease Nature {{form.disease_nature}}</p>
+                <p>Clinical Signs {{form.clinical_signs}}</p> 
+                <p>Disease Diagnosis {{form.disease_diagnosis}}</p> 
+                <p>Differential Diagnosis {{form.differential_diagnosis}}</p> 
+                <p>Final Diagnosis {{form.final_diagnosis}}</p> 
+                <p>Sickness Duration {{form.sickness_duration}}</p> 
+                <p>Sickness History {{form.sickness_history}}</p> 
+                <p>Drug of Choice {{form.drug_of_choice}}</p>   
+                <p>Treatment Duration {{form.treatment_duration}}</p> 
+                <p>Start Dose Date {{form.start_dose_date}}</p>
+                <p>Prognosis {{form.prognosis}}</p>
+                <p>{{form.harmony_with_clinic_signs_and_lab}}</p>
+                <p>Cause of Death {{form.cause_of_death_if_in_no_harmony}}</p>
+                <p>{{form.disease_one_of_the_zoonotic}}</p>
+                <p>{{form.advice_given_if_zoonotic}}</p>
+                <p>{{form.relapse}}</p>
+                <p>{{form.cause_if_relapse}}</p>
+                <p>{{form.comment}}</p>
+                
+                  
+            </div>
+         </div>   
+    </section> 
+
+{% endblock content %}    
