@@ -32,14 +32,14 @@ urlpatterns = [
     #users login 
     path('user/login/',user_views.user_login,name='login'),
     path('logout/', user_views.user_logout, name='logout'),
-    #path('logout/',auth_views.LogoutView.as_view(template_name='user/logout.html'),name='logout'),
+
     #users portals
     path('vet_portal/', portal_views.portal_vet, name='vet-portal'),
     path('farmer_portal/', portal_views.portal_farmer, name='farmer-portal'),
     path('student_portal/', portal_views.portal_student, name='student-portal'),
     #vet forms
     path('clinical_approach/',portal_views.clinical_approach,name='clinical-approach'),
-    #path('sick_approach', user_views.SickApproachFormView.as_view(), name='sick-approach'),
+
     path('sick_approach', portal_views.sick_approach, name='sick-approach'),
     path('dead_approach', portal_views.dead_approach, name='dead-approach'),
     path('surgical_approach',portal_views.surgical_approach, name='surgical-approach'),
@@ -50,7 +50,9 @@ urlpatterns = [
     path('pregnancy_diagnosis',portal_views.pregnancy_diagnosis,name='pregnancy_diagnosis'),
     path('calf_registration', portal_views.calf_registration, name='calf-registration'),
     path('livestock_inventory', portal_views.livestock_inventory, name='livestock-inventory'),
-    path('consultation',portal_views.consultation,name='consultation')
+    path('consultation',portal_views.consultation,name='consultation'),
+
+    path('test/', portal_views.get_sick_form, name='queryform')
 ]
 
 if settings.DEBUG:

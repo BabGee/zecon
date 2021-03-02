@@ -136,7 +136,7 @@ class Sick_Approach_Form(models.Model):
 	cause_if_relapse = models.CharField(max_length=100, null=True, blank=True, verbose_name='if yes, what might be the cause')
 	comment = models.CharField(max_length=300,null=True,blank=True,verbose_name='comment')
 	def __str__(self):
-		return f'Name of form: Sick Approach Form'
+		return self.farmer_username
 	
 
 class Death_Approach_Form(models.Model):
