@@ -272,5 +272,4 @@ def display_images(request):
 
 
 
-
      
