@@ -50,7 +50,8 @@ urlpatterns = [
     path('pregnancy_diagnosis',portal_views.pregnancy_diagnosis,name='pregnancy_diagnosis'),
     path('calf_registration', portal_views.calf_registration, name='calf-registration'),
     path('livestock_inventory', portal_views.livestock_inventory, name='livestock-inventory'),
-    path('consultation',portal_views.consultation,name='consultation')
+    path('consultation',portal_views.consultation,name='consultation'),
+    path('gallery/', portal_views.display_images, name='display-images')
 ]
 
 if settings.DEBUG:

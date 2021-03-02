@@ -4,7 +4,7 @@ from .forms import SickApproachForm, DeathApproachForm, SurgicalApproachForm, De
 from django.contrib import messages
 #from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import user_passes_test
-from portals.models import Vet_Forms
+from portals.models import Vet_Forms, Livestock_Inventory_Form
 
 
 def vet_check(request):
@@ -193,20 +193,20 @@ def calf_registration(request):
 @user_passes_test(farmer_check, login_url='login')
 def livestock_inventory(request):
     if request.method == "POST":
-        form = LivestockInventoryForm(request.POST)
+        form = LivestockInventoryForm(request.POST, request.FILES)
         if form.is_valid():
             vet_inventory_form = Vet_Forms(is_livestock_inventory_form=True)
             vet_inventory_form.save() 
             form.save()
             messages.success(request, 'Details  Succesfully Saved')
-            return redirect('farmer-portal')    
+            return redirect('farmer-portal')
 
     else:
         form = LivestockInventoryForm()
 
     context = {
         'form':form,
-        'name':'Livestock Inventory Form'
+        'name':'Livestock Inventory Form',
          }
     return render(request, 'portals/farmerforms.html', context) 
 
@@ -252,6 +252,12 @@ def consultation(request):
     return render(request, 'portals/forms.html', context)
 
 
+def display_images(request):
+    inventory = Livestock_Inventory_Form.objects.get(farmer_username=request.user)
+    context = {
+        'img_obj': inventory
+    }
+    return render(request, 'portals/gallery.html', context)
 
 
 
