@@ -51,8 +51,9 @@ urlpatterns = [
     path('calf_registration', portal_views.calf_registration, name='calf-registration'),
     path('livestock_inventory', portal_views.livestock_inventory, name='livestock-inventory'),
     path('consultation',portal_views.consultation,name='consultation'),
+    path('test/', portal_views.get_sick_form, name='queryform'),
+    path('gallery/', portal_views.display_images, name='display-images')
 
-    path('test/', portal_views.get_sick_form, name='queryform')
 ]
 
 if settings.DEBUG:
