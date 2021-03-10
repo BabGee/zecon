@@ -14,13 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from user import views as user_views
 from portals import views as portal_views
 
 from django.conf.urls.static import static
 from django.conf import settings
+
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('', include('vet.urls')),
@@ -51,7 +52,7 @@ urlpatterns = [
     path('calf_registration', portal_views.calf_registration, name='calf-registration'),
     path('livestock_inventory', portal_views.livestock_inventory, name='livestock-inventory'),
     path('consultation',portal_views.consultation,name='consultation'),
-    path('test/', portal_views.get_sick_form, name='queryform'),
+    path('sickform/', login_required(portal_views.Sick_Form_Pdf.as_view()), name='queryform'),
     path('gallery/', portal_views.display_images, name='display-images')
 
 ]
