@@ -5,6 +5,9 @@ from django.contrib import messages
 #from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import user_passes_test
 from .models import Vet_Forms, Sick_Approach_Form, Livestock_Inventory_Form
+from django.views import View
+from .render import Render
+from django.utils import timezone
 
 
 
@@ -253,15 +256,22 @@ def consultation(request):
     return render(request, 'portals/forms.html', context)
 
 
-def get_sick_form(request):
-    sick_forms = Sick_Approach_Form.objects.all()
-    form = Sick_Approach_Form.objects.get(farmer_username=request.user)
+class Sick_Form_Pdf(View):
 
-    context = {
-        'form':form
-    }        
+    def get(self, request):
+        sick_form = Sick_Approach_Form.objects.get(farmer_username=request.user)
+        if sick_form:
+            params = {
+                'today':timezone.now,
+                'form': sick_form,
+                'request': request
+            }
+            return Render.render('portals/sick_form.html', params)
+        else:
+            messages.warning(self.request, f'No Sick form available for {self.request.user}')
+            return redirect('index')    
 
-    return render(request, 'portals/sick_form.html', context)        
+
 
 def display_images(request):
     inventory = Livestock_Inventory_Form.objects.get(farmer_username=request.user)
