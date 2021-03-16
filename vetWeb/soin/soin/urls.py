@@ -52,7 +52,12 @@ urlpatterns = [
     path('calf_registration', portal_views.calf_registration, name='calf-registration'),
     path('livestock_inventory', portal_views.livestock_inventory, name='livestock-inventory'),
     path('consultation',portal_views.consultation,name='consultation'),
-    path('sickform/', login_required(portal_views.Sick_Form_Pdf.as_view()), name='queryform'),
+    path('sickform/', login_required(portal_views.Sick_Form_Pdf.as_view()), name='sickform'),
+    path('deadform/', login_required(portal_views.Dead_Form_Pdf.as_view()), name='deadform'),
+    path('surgicalform/', login_required(portal_views.Surgical_Form_Pdf.as_view()), name='surgicalform'),
+    path('dewormingform/', login_required(portal_views.Deworming_Form_Pdf.as_view()), name='dewormingform'),
+    path('artificialform/', login_required(portal_views.Artificial_Insemination_Form_Pdf.as_view()), name='artificialform'),
+    path('vaccinationform/', login_required(portal_views.Vaccination_Form_Pdf.as_view()), name='vaccinationform'),
     path('gallery/', portal_views.display_images, name='display-images')
 
 ]

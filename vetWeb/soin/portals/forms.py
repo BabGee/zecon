@@ -1,5 +1,5 @@
 from django import forms
-from django.forms import ModelForm, DateInput, TextInput
+from django.forms import ModelForm, DateInput, TextInput,TimeInput
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
@@ -24,6 +24,10 @@ class DeathApproachForm(ModelForm):
 	class Meta:
 		model = Death_Approach_Form
 		exclude = ['vet_form', 'report_created_on',]
+
+		widgets = {
+            'death_time': DateInput(attrs={'type': 'date'}),
+        }
 
 
 class SurgicalApproachForm(ModelForm):
@@ -68,6 +72,8 @@ class ArtificialInseminationForm(ModelForm):
 			'date_of_repeat_checked': DateInput(attrs={'type':'date'}),
 			'date_of_pregnancy_diagnosis': DateInput(attrs={'type':'date'}),
 			'expected_date_of_calving': DateInput(attrs={'type':'date'}),
+			'time_of_heat_sign' : TimeInput(attrs={'type':'time'}),
+			'time_of_insemination' : TimeInput(attrs={'type':'time'}),
         }
 
 

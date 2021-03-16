@@ -4,7 +4,7 @@ from .forms import SickApproachForm, DeathApproachForm, SurgicalApproachForm, De
 from django.contrib import messages
 #from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import user_passes_test
-from .models import Vet_Forms, Sick_Approach_Form, Livestock_Inventory_Form
+from .models import Vet_Forms, Sick_Approach_Form, Livestock_Inventory_Form, Death_Approach_Form, Surgical_Approach_Form, Deworming_Form, Vaccination_Form, Artificial_Insemination_Form
 from django.views import View
 from .render import Render
 from django.utils import timezone
@@ -270,6 +270,102 @@ class Sick_Form_Pdf(View):
         else:
             messages.warning(self.request, f'No Sick form available for {self.request.user}')
             return redirect('index')    
+
+
+
+class Dead_Form_Pdf(View):
+
+    def get(self, request):
+        dead_form = Death_Approach_Form.objects.get(farmer_username=request.user)
+        if dead_form:
+            params = {
+                'today':timezone.now,
+                'form': dead_form,
+                'request': request
+            }
+            return Render.render('portals/dead_form.html',params)
+        else:
+            messages.warning(self.request,f'No dead form available for {self.request.user}')
+            return redirect('index')
+
+
+class Surgical_Form_Pdf(View):
+
+    def get(self, request):
+        surgical_form = Surgical_Approach_Form.objects.get(farmer_username=request.user)
+        if surgical_form:
+            params = {
+                'today':timezone.now,
+                'form': surgical_form,
+                'request': request
+            }
+            return Render.render('portals/surgical_form.html',params)
+        else:
+            messages.warning(self.request,f'No surgical form available for {self.request.user}')
+            return redirect('index')
+
+
+
+
+class Deworming_Form_Pdf(View):
+
+    def get(self, request):
+        deworming_form = Deworming_Form.objects.get(farmer_username=request.user)
+        if deworming_form:
+            params = {
+                'today':timezone.now,
+                'form': deworming_form,
+                'request': request
+            }
+            return Render.render('portals/deworming_form.html', params)
+        else:
+            messages.warning(self.request, f'No deworming form available for {self.request.user}')
+            return redirect('index')    
+
+
+class Vaccination_Form_Pdf(View):
+
+    def get(self, request):
+        vaccination_form = Vaccination_Form.objects.get(farmer_username=request.user)
+        if vaccination_form:
+            params = {
+                'today':timezone.now,
+                'form': vaccination_form,
+                'request': request
+            }
+            return Render.render('portals/vaccination_form.html', params)
+        else:
+            messages.warning(self.request, f'No vaccination form available for {self.request.user}')
+            return redirect('index') 
+
+
+
+class Artificial_Insemination_Form_Pdf(View):
+
+    def get(self, request):
+        Artificial_form = Artificial_Insemination_Form.objects.get(farmer_username=request.user)
+        if Artificial_form:
+            params = {
+                'today':timezone.now,
+                'form': Artificial_form,
+                'request': request
+            }
+            return Render.render('portals/artificial_form.html', params)
+        else:
+            messages.warning(self.request, f'No artificial form available for {self.request.user}')
+            return redirect('index') 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
