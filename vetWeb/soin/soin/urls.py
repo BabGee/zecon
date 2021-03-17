@@ -52,7 +52,7 @@ urlpatterns = [
     path('calf_registration', portal_views.calf_registration, name='calf-registration'),
     path('livestock_inventory', portal_views.livestock_inventory, name='livestock-inventory'),
     path('consultation',portal_views.consultation,name='consultation'),
-    path('sickform/', login_required(portal_views.Sick_Form_Pdf.as_view()), name='queryform'),
+    path('sickform/', login_required(portal_views.Sick_Form_Pdf.as_view()), name='sickform'),
     path('gallery/', portal_views.display_images, name='display-images')
 
 ]

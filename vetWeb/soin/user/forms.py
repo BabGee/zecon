@@ -38,7 +38,7 @@ class VetOfficerSignUpForm(UserCreationForm):
 			}
 		)
 	)
-	phone_number = forms.RegexField(regex=r'^\+?1?\d{9,12}$')
+	phone_number = forms.CharField()
 	kvb_number = forms.CharField()
 	
 	password1 = forms.CharField(
@@ -73,7 +73,7 @@ class VetOfficerSignUpForm(UserCreationForm):
 		
 	@transaction.atomic
 	def save(self):
-		user = super().save(commit=True)
+		user = super().save(commit=False)
 		user.is_vet_officer = True
 		user.first_name = self.cleaned_data.get('first_name')
 		user.last_name = self.cleaned_data.get('last_name')
@@ -118,7 +118,7 @@ class FarmerSignUpForm(UserCreationForm):
 			
 	@transaction.atomic
 	def save(self):
-		user = super().save(commit=True)
+		user = super().save(commit=False)
 		user.is_farmer = True
 		user.first_name = self.cleaned_data.get('first_name')
 		user.last_name = self.cleaned_data.get('last_name')
@@ -165,7 +165,7 @@ class StudentSignUpForm(UserCreationForm):
 
 	@transaction.atomic
 	def save(self):
-		user = super().save(commit=True)
+		user = super().save(commit=False)
 		user.is_student = True
 		user.first_name = self.cleaned_data.get('first_name')
 		user.last_name = self.cleaned_data.get('last_name')

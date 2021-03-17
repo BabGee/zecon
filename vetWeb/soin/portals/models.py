@@ -95,6 +95,7 @@ RESULT_CHOICES=(
 
 
 class Vet_Forms(models.Model):
+	vet_username = models.CharField(max_length=20)
 	is_sick_approach_form = models.BooleanField(default=False)
 	is_dead_approach_form= models.BooleanField(default=False)
 	is_surgical_approach_form = models.BooleanField(default=False)
@@ -109,6 +110,9 @@ class Vet_Forms(models.Model):
 
 	class Meta:
 		ordering = ['-report_created_on']
+
+	def __str__(self):
+		return 'Vet form'	
 
 
 class Sick_Approach_Form(models.Model):
@@ -135,6 +139,7 @@ class Sick_Approach_Form(models.Model):
 	relapse = models.CharField(max_length=5, choices=YES_NO_CHOICES, default='0', verbose_name='was there any relapse?')
 	cause_if_relapse = models.CharField(max_length=100, null=True, blank=True, verbose_name='if yes, what might be the cause')
 	comment = models.CharField(max_length=300,null=True,blank=True,verbose_name='comment')
+	
 	def __str__(self):
 		return self.farmer_username
 	

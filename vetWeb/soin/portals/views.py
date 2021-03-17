@@ -24,8 +24,10 @@ def student_check(request):
 @user_passes_test(vet_check, login_url='login')
 def portal_vet(request):
     vet_officers = Vet_Officer.objects.all()
+    no_vet_forms =Vet_Forms.objects.filter(vet_username=request.user).count()
     context = {
-        'all_vets': vet_officers
+        'all_vets': vet_officers,
+        'count': no_vet_forms
     }
     return render(request, 'portals/indexvet.html', context)
 
@@ -55,7 +57,7 @@ def sick_approach(request):
     if request.method == "POST":
         form = SickApproachForm(request.POST)
         if form.is_valid():
-            vet_sick_form = Vet_Forms(is_sick_approach_form=True)
+            vet_sick_form = Vet_Forms(vet_username=request.user, is_sick_approach_form=True)
             vet_sick_form.save()
             form.save()
             messages.success(request, 'Details  Succesfully Saved')
@@ -75,10 +77,10 @@ def dead_approach(request):
     if request.method == "POST":
         form = DeathApproachForm(request.POST)
         if form.is_valid():
-            vet_death_form = Vet_Forms(is_dead_approach_form=True)
+            vet_death_form = Vet_Forms(vet_username=request.user, is_dead_approach_form=True)
             vet_death_form.save() 
             form.save()
-            messages.success(request, 'Details  Succesfully Saved')
+            messages.success(request, 'Details  Successfully Saved')
             return redirect('vet-portal')    
 
     else:
@@ -95,7 +97,7 @@ def surgical_approach(request):
     if request.method == "POST":
         form = SurgicalApproachForm(request.POST)
         if form.is_valid():
-            vet_surgical_form = Vet_Forms(is_dead_approach_form=True)
+            vet_surgical_form = Vet_Forms(vet_username=request.user, is_surgical_approach_form=True)
             vet_surgical_form.save() 
             form.save()
             messages.success(request, 'Details  Succesfully Saved')
@@ -115,10 +117,10 @@ def deworming(request):
     if request.method == "POST":
         form = DewormingForm(request.POST)
         if form.is_valid():
-            vet_deworming_form = Vet_Forms(is_dead_approach_form=True)
+            vet_deworming_form = Vet_Forms(vet_username=request.user, is_deworming_form=True)
             vet_deworming_form.save() 
             form.save()
-            messages.success(request, 'Details  Succesfully Saved')
+            messages.success(request, 'Details  Successfully Saved')
             return redirect('vet-portal')    
 
     else:
@@ -135,7 +137,7 @@ def vaccination(request):
     if request.method == "POST":
         form = VaccinationForm(request.POST)
         if form.is_valid():
-            vet_vaccination_form = Vet_Forms(is_vaccination_form=True)
+            vet_vaccination_form = Vet_Forms(vet_username=request.user, is_vaccination_form=True)
             vet_vaccination_form.save() 
             form.save()
             messages.success(request, 'Details  Succesfully Saved')
@@ -159,7 +161,7 @@ def artificial_insemination(request):
     if request.method == "POST":
         form = ArtificialInseminationForm(request.POST)
         if form.is_valid():
-            vet_ai_form = Vet_Forms(is_artificial_insemination_form=True)
+            vet_ai_form = Vet_Forms(vet_username=request.user, is_artificial_insemination_form=True)
             vet_ai_form.save() 
             form.save()
             messages.success(request, 'Details  Succesfully Saved')
@@ -219,7 +221,7 @@ def pregnancy_diagnosis(request):
     if request.method == "POST":
         form = PregnancyDiagnosisForm(request.POST)
         if form.is_valid():
-            vet_preg_form = Vet_Forms(is_pregnancy_diagnosis_form=True)
+            vet_preg_form = Vet_Forms(vet_username=request.user, is_pregnancy_diagnosis_form=True)
             vet_preg_form.save() 
             form.save()
             messages.success(request, 'Details  Succesfully Saved')
@@ -240,7 +242,7 @@ def consultation(request):
     if request.method == "POST":
         form = FarmConsultationForm(request.POST)
         if form.is_valid():
-            consul_form = Vet_Forms(is_farm_consultation_form=True)
+            consul_form = Vet_Forms(vet_username=request.user, is_farm_consultation_form=True)
             consul_form.save() 
             form.save()
             messages.success(request, 'Details  Succesfully Saved')
@@ -259,11 +261,15 @@ def consultation(request):
 class Sick_Form_Pdf(View):
 
     def get(self, request):
-        sick_form = Sick_Approach_Form.objects.get(farmer_username=request.user)
-        if sick_form:
+        try:
+            sick_forms = Sick_Approach_Form.objects.filter(farmer_username=request.user)
+        except:
+            messages.warning(self.request, f'Sick approach form for {request.user} not available')
+            return redirect('farmer-portal')    
+        if sick_forms:
             params = {
                 'today':timezone.now,
-                'form': sick_form,
+                'forms': sick_forms,
                 'request': request
             }
             return Render.render('portals/sick_form.html', params)

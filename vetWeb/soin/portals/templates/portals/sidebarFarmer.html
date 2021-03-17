@@ -35,15 +35,26 @@
             </li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-user"></i><span>Farmer Records</span>
+                    <i class="fa fa-user"></i><span>Farm Inventory</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{% url 'calf-registration' %}">CalfRegistrationForm</a></li>
-                    <li><a href="{% url 'livestock-inventory' %}">LivestockInventoryForm</a></li>
-                    <li><a href="{% url 'queryform' %}">Sick Approach Form</a></li>        
+                    <li><a href="{% url 'calf-registration' %}">Calf Registration Form</a></li>
+                    <li><a href="{% url 'livestock-inventory' %}">Livestock Inventory Form</a></li>       
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-user"></i><span>Form Records</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{% url 'sickform' %}">Sick Approach Form</a></li>        
                 </ul>
             </li>
 

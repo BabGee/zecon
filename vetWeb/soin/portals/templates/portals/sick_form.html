@@ -58,15 +58,18 @@
 </head>
 <body>
 
+    
+{% for form in forms %}
 <div class="container">
     <div class="card">
         <h2 class="text-center">Sick Approach Form</h2>
         <div class="card-header">      
-            <h3>DATE : {{today}}</h3>
+            <h3>DATE : {{form.vet_form.report_created_on}}</h3>
         </div>
 
         <div class="list-group">
-            <p>Name: {{ request.user }}</p>     
+            <p>Vet Officer Name: {{form.vet_form.vet_username}} </p>
+            <p>Farmer Name {{ request.user }}</p>     
         </div>
 
         <table class="table">
@@ -169,8 +172,11 @@
                 </tr>
             </tfoot>
         </table>
+        <div class="card-header">      
+            <h3>form generated on: {{today}}</h3>
+        </div>
     </div>
 </div>
-
+{% endfor %}
 </body>
 </html>
