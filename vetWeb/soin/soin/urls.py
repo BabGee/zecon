@@ -40,7 +40,6 @@ urlpatterns = [
     path('student_portal/', portal_views.portal_student, name='student-portal'),
     #vet forms
     path('clinical_approach/',portal_views.clinical_approach,name='clinical-approach'),
-
     path('sick_approach', portal_views.sick_approach, name='sick-approach'),
     path('dead_approach', portal_views.dead_approach, name='dead-approach'),
     path('surgical_approach',portal_views.surgical_approach, name='surgical-approach'),
@@ -53,6 +52,14 @@ urlpatterns = [
     path('livestock_inventory', portal_views.livestock_inventory, name='livestock-inventory'),
     path('consultation',portal_views.consultation,name='consultation'),
     path('sickform/', login_required(portal_views.Sick_Form_Pdf.as_view()), name='sickform'),
+<<<<<<< HEAD
+=======
+    path('deadform/', login_required(portal_views.Dead_Form_Pdf.as_view()), name='deadform'),
+    path('surgicalform/', login_required(portal_views.Surgical_Form_Pdf.as_view()), name='surgicalform'),
+    path('dewormingform/', login_required(portal_views.Deworming_Form_Pdf.as_view()), name='dewormingform'),
+    path('artificialform/', login_required(portal_views.Artificial_Insemination_Form_Pdf.as_view()), name='artificialform'),
+    path('vaccinationform/', login_required(portal_views.Vaccination_Form_Pdf.as_view()), name='vaccinationform'),
+>>>>>>> e3d56e3ed4f1ed6f3101d29955add532d08cbb1d
     path('gallery/', portal_views.display_images, name='display-images')
 
 ]
