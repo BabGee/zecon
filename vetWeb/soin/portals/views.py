@@ -4,7 +4,7 @@ from .forms import SickApproachForm, DeathApproachForm, SurgicalApproachForm, De
 from django.contrib import messages
 #from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import user_passes_test
-from .models import Vet_Forms, Sick_Approach_Form, Livestock_Inventory_Form, Death_Approach_Form, Surgical_Approach_Form, Deworming_Form, Vaccination_Form, Artificial_Insemination_Form
+from .models import Vet_Forms, Sick_Approach_Form, Livestock_Inventory_Form, Death_Approach_Form, Surgical_Approach_Form, Deworming_Form, Vaccination_Form, Artificial_Insemination_Form, Farm_Consultation
 from django.views import View
 from .render import Render
 from django.utils import timezone
@@ -240,8 +240,8 @@ def consultation(request):
     if request.method == "POST":
         form = FarmConsultationForm(request.POST)
         if form.is_valid():
-            consul_form = Vet_Forms(is_farm_consultation_form=True)
-            consul_form.save() 
+            consultation_form = Vet_Forms(is_farm_consultation=True)
+            consultation_form.save() 
             form.save()
             messages.success(request, 'Details  Succesfully Saved')
             return redirect('vet-portal')    
@@ -357,7 +357,20 @@ class Artificial_Insemination_Form_Pdf(View):
 
 
 
+class Farm_Consultation_Form_Pdf(View):
 
+    def get(self, request):
+        consultation_form = Farm_Consultation.objects.get(farmer_username=request.user)
+        if consultation_form:
+            params = {
+                'today':timezone.now,
+                'form': consultation_form,
+                'request': request
+            }
+            return Render.render('portals/consultation_form.html', params)
+        else:
+            messages.warning(self.request, f'No consultation form available for {self.request.user}')
+            return redirect('index') 
 
 
 
