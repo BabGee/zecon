@@ -57,6 +57,7 @@ urlpatterns = [
     path('dewormingform/', login_required(portal_views.Deworming_Form_Pdf.as_view()), name='dewormingform'),
     path('artificialform/', login_required(portal_views.Artificial_Insemination_Form_Pdf.as_view()), name='artificialform'),
     path('vaccinationform/', login_required(portal_views.Vaccination_Form_Pdf.as_view()), name='vaccinationform'),
+    path('consultationform/', login_required(portal_views.Farm_Consultation_Form_Pdf.as_view()), name='consultationform'),
     path('gallery/', portal_views.display_images, name='display-images')
 
 ]
