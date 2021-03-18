@@ -40,7 +40,6 @@ urlpatterns = [
     path('student_portal/', portal_views.portal_student, name='student-portal'),
     #vet forms
     path('clinical_approach/',portal_views.clinical_approach,name='clinical-approach'),
-
     path('sick_approach', portal_views.sick_approach, name='sick-approach'),
     path('dead_approach', portal_views.dead_approach, name='dead-approach'),
     path('surgical_approach',portal_views.surgical_approach, name='surgical-approach'),
