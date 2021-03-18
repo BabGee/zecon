@@ -4,7 +4,7 @@ from .forms import SickApproachForm, DeathApproachForm, SurgicalApproachForm, De
 from django.contrib import messages
 #from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import user_passes_test
-from .models import Vet_Forms, Sick_Approach_Form, Livestock_Inventory_Form
+from .models import Calf_Registration_Form, Vet_Forms, Sick_Approach_Form, Livestock_Inventory_Form
 from .models import Vet_Forms, Sick_Approach_Form, Livestock_Inventory_Form, Death_Approach_Form, Surgical_Approach_Form, Deworming_Form, Vaccination_Form, Artificial_Insemination_Form, Farm_Consultation
 from django.views import View
 from .render import Render
@@ -183,10 +183,12 @@ def calf_registration(request):
         form = CalfRegistrationForm(request.POST)
         if form.is_valid():
             vet_calf_form = Vet_Forms(is_calf_registration_form=True)
-            vet_calf_form.save() 
+            vet_calf_form.save()
+            form = form.save(commit=False)
+            form.farmer_username = request.user
             form.save()
             messages.success(request, 'Details  Succesfully Saved')
-            return redirect('vet-portal')    
+            return redirect('farmer-portal')    
 
     else:
         form = CalfRegistrationForm()
@@ -284,7 +286,11 @@ class Sick_Form_Pdf(View):
 class Dead_Form_Pdf(View):
 
     def get(self, request):
-        dead_form = Death_Approach_Form.objects.get(farmer_username=request.user)
+        try:
+            dead_form = Death_Approach_Form.objects.filter(farmer_username=request.user)
+        except:
+            messages.warning(self.request, f'Sick approach form for {request.user} not available')
+            return redirect('farmer-portal')
         if dead_form:
             params = {
                 'today':timezone.now,
@@ -300,7 +306,11 @@ class Dead_Form_Pdf(View):
 class Surgical_Form_Pdf(View):
 
     def get(self, request):
-        surgical_form = Surgical_Approach_Form.objects.get(farmer_username=request.user)
+        try:
+            surgical_form = Surgical_Approach_Form.objects.filter(farmer_username=request.user)
+        except:
+            messages.warning(self.request, f'Sick approach form for {request.user} not available')
+            return redirect('farmer-portal')
         if surgical_form:
             params = {
                 'today':timezone.now,
@@ -318,7 +328,11 @@ class Surgical_Form_Pdf(View):
 class Deworming_Form_Pdf(View):
 
     def get(self, request):
-        deworming_form = Deworming_Form.objects.get(farmer_username=request.user)
+        try:
+            deworming_form = Deworming_Form.objects.filter(farmer_username=request.user)
+        except:
+            messages.warning(self.request, f'Sick approach form for {request.user} not available')
+            return redirect('farmer-portal')
         if deworming_form:
             params = {
                 'today':timezone.now,
@@ -334,7 +348,11 @@ class Deworming_Form_Pdf(View):
 class Vaccination_Form_Pdf(View):
 
     def get(self, request):
-        vaccination_form = Vaccination_Form.objects.get(farmer_username=request.user)
+        try:
+            vaccination_form = Vaccination_Form.objects.filter(farmer_username=request.user)
+        except:
+            messages.warning(self.request, f'Sick approach form for {request.user} not available')
+            return redirect('farmer-portal')
         if vaccination_form:
             params = {
                 'today':timezone.now,
@@ -351,7 +369,11 @@ class Vaccination_Form_Pdf(View):
 class Artificial_Insemination_Form_Pdf(View):
 
     def get(self, request):
-        Artificial_form = Artificial_Insemination_Form.objects.get(farmer_username=request.user)
+        try:
+            Artificial_form = Artificial_Insemination_Form.objects.filter(farmer_username=request.user)
+        except:
+            messages.warning(self.request, f'Sick approach form for {request.user} not available')
+            return redirect('farmer-portal')
         if Artificial_form:
             params = {
                 'today':timezone.now,
@@ -368,7 +390,11 @@ class Artificial_Insemination_Form_Pdf(View):
 class Farm_Consultation_Form_Pdf(View):
 
     def get(self, request):
-        consultation_form = Farm_Consultation.objects.get(farmer_username=request.user)
+        try:
+            consultation_form = Farm_Consultation.objects.filter(farmer_username=request.user)
+        except:
+            messages.warning(self.request, f'Sick approach form for {request.user} not available')
+            return redirect('farmer-portal')
         if consultation_form:
             params = {
                 'today':timezone.now,
