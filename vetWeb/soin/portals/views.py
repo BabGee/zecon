@@ -4,8 +4,13 @@ from .forms import SickApproachForm, DeathApproachForm, SurgicalApproachForm, De
 from django.contrib import messages
 #from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import user_passes_test
+<<<<<<< HEAD
 from .models import Calf_Registration_Form, Vet_Forms, Sick_Approach_Form, Livestock_Inventory_Form
 from .models import Vet_Forms, Sick_Approach_Form, Livestock_Inventory_Form, Death_Approach_Form, Surgical_Approach_Form, Deworming_Form, Vaccination_Form, Artificial_Insemination_Form, Farm_Consultation
+=======
+from .models import Vet_Forms, Sick_Approach_Form, Livestock_Inventory_Form
+from .models import Vet_Forms, Sick_Approach_Form, Livestock_Inventory_Form, Death_Approach_Form, Surgical_Approach_Form, Deworming_Form, Vaccination_Form, Artificial_Insemination_Form, Farm_Consultation,Pregnancy_Diagnosis_Form
+>>>>>>> upstream/master
 from django.views import View
 from .render import Render
 from django.utils import timezone
@@ -405,6 +410,24 @@ class Farm_Consultation_Form_Pdf(View):
         else:
             messages.warning(self.request, f'No consultation form available for {self.request.user}')
             return redirect('index') 
+
+
+class Pregnancy_Diagnosis_Form_Pdf(View):
+
+    def get(self, request):
+        diagnosis_form = Pregnancy_Diagnosis_Form.objects.get(farmer_username=request.user)
+        if diagnosis_form:
+            params = {
+                'today':timezone.now,
+                'form': diagnosis_form,
+                'request': request
+            }
+            return Render.render('portals/diagnosis_form.html', params)
+        else:
+            messages.warning(self.request, f'No pregnancy form available for {self.request.user}')
+            return redirect('index') 
+
+
 
 
 def display_images(request):

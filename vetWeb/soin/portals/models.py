@@ -303,15 +303,16 @@ class Livestock_Inventory_Form(models.Model):
 class Pregnancy_Diagnosis_Form(models.Model):
 	vet_form = models.OneToOneField(Vet_Forms, on_delete=models.CASCADE, primary_key=True)
 	farmer_username = models.CharField(max_length=12,verbose_name='Farmer Username')
-	cow_name = models.CharField(max_length=20,null=True,blank=True,verbose_name='Name or registration number of the cow')
+	cow_name = models.CharField(max_length=20,null=True,blank=True,verbose_name='Name or idenfication number of the cow')
 	cow_category = models.CharField(max_length=50,choices = COW_CATEGORY,default='H', verbose_name='Cow`s category')
 	date_of_insemination = models.DateField(verbose_name='Date of insemination')
-	date_of_pregnancy_diagnosis = models.DateTimeField()
+	date_of_pregnancy_diagnosis = models.DateField(verbose_name='date of pregnancy diagnosis')
 	result_of_diagnosis = models.CharField(max_length=20, choices = RESULT_CHOICES, verbose_name='Results of diagnosis')
+	if_positive = models.CharField(max_length=100,null=True,blank=True,verbose_name='If the result is positive give the approximate age of the fetus.')
 	if_result_is_negative_give_observation = models.CharField(max_length=100, null=True, blank=True,verbose_name='If the result test negative give your observation')
 	next_date_of_pregnancy_diagnosis = models.DateField(verbose_name='Next date of pregnancy diagnosis')
 	expected_date_of_delivery = models.DateField(verbose_name='Expected date of delivery')
-	comment = models.CharField(max_length=100, null=True, blank=True)
+	comment = models.CharField(max_length=100, null=True, blank=True,verbose_name='Comment')
 
 	def __str__(self):
 		return f'Name of form: Pregnancy Diagnosis Form'
@@ -327,6 +328,14 @@ class Farm_Consultation(models.Model):
 	canine = models.CharField(max_length=100,null=True,blank=True,verbose_name='Canine keeping')
 	other = models.CharField(max_length=100,null=True,blank=True,verbose_name='Other livestock')
 	give_recommendation = models.CharField(max_length=100,null=True,blank=True,verbose_name='Give recommendation.')
+	grazing = models.CharField(max_length=200, null=True, blank=True, verbose_name='Grazing system and pasture management.')
+	disease = models.CharField(max_length=100, null=True, blank=True,verbose_name='Disease control.')
+	farm = models.CharField(max_length=100, null=True, blank=True, verbose_name='Farm biosecurity')
+	culling_selection = models.CharField(max_length=100, null=True,blank=True, verbose_name='Culling and Selection.')
+	by_veterinary_officer = models.CharField(max_length=20, choices=YES_NO_CHOICES, default='Y',verbose_name='Is the farm manged by a veterinary officer or livestock officer?')
+	if_no = models.CharField(max_length=100, null=True,blank=True, verbose_name='If no,who is the farm consultant?')
+	name_incharge = models.CharField(max_length=100, null=True, blank=True,verbose_name='Name of the veterinary officer incharge.')
+	reg_number = models.CharField(max_length=100, null=True, blank=True,verbose_name='Registration number.')
 	comment = models.CharField(max_length=100, null=True, blank=True)
 
 	def __str__(self):
