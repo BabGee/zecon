@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vaccination Form </title>
+    <style type="text/css">
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+
+        .table {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 5px;
+            background-color: #fff;
+        }
+
+        .table th,
+        .table td {
+            padding: 5px;
+            vertical-align: top;
+            border-top: 1px solid #000;
+            text-align: center;
+        }
+
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #000;
+        }
+
+        .table tbody + tbody {
+            border-top: 2px solid #000;
+        }
+
+        .table .table {
+            background-color: #fff;
+        }
+
+        .list-group {
+            display: block;
+            width: 100%;
+            list-style: none;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .list-group p {
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            list-style: none;
+            font-size: 1.1em;
+        }
+
+    </style>
+</head>
+<body>
+
+{% for form in forms %}
+<div class="container">
+    <div class="card">
+        <h2 class="text-center"> Vaccination pdf  </h2>
+        <div class="card-header">      
+            <h3>DATE : {{today}}</h3>
+        </div>
+
+        <div class="list-group">
+            <p>Name: {{ request.user }}</p>     
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name of the cow or identification number of the cow</td>
+                    <td>{{ form.Name_of_the_cow  }}</td>
+                <tr>
+                <tr>
+                    <td>Time of heat sign</td>
+                    <td>{{ form.time_of_heat_sign }}</td>
+                </tr>
+                <tr>
+                    <td>Time of insemination</td>
+                    <td>{{ form.time_of_inseminatio }}</td>
+                </tr>
+                <tr>
+                    <td>Date of insemination</td>
+                    <td>{{ form.date_of_insemination }}</td>
+                </tr>
+                <tr>
+                    <td>Nature of breeding</td>
+                    <td>{{ form.nature_of_the_breeding }}</td>
+                </tr>
+                <tr>
+                    <td>Sire`s name</td>
+                    <td>{{ form.sire_name }}</td>
+                </tr>
+                <tr>
+                    <td>Sire origin</td>
+                    <td>{{ form.sire_origin }}</td>
+                </tr>
+                <tr>
+                    <td>Bull code</td>
+                    <td>{{ form.bull_code }}</td>
+                </tr>
+                <tr>
+                    <td>Sex of the calf born</td>
+                    <td>{{ form.sex_of_the_calf_born }}</td>
+                </tr>
+                <tr>
+                    <td>Date of birth</td>
+                    <td>{{ form.date_of_birth }}</td>
+                </tr>
+                <tr>
+                    <td>Nature of birth</td>
+                    <td>{{ form.nature_of_birth }}</td>
+                </tr>
+                <tr>
+                    <td>Number of repeat</td>
+                    <td>{{ form.number_of_repeat }}</td>
+                </tr>
+                <tr>
+                    <td>Abortion rate</td>
+                    <td>{{ form.abortion_rate }}</td>
+                </tr>
+                <tr>
+                    <td>reason for abortion</td>
+                    <td>{{ form.reason_for_the_cause_of_abortion }}</td>
+                </tr>   
+                <tr>
+                    <td>Breed used</td>
+                    <td>{{ form.breed_used }}</td>
+                </tr>
+                <tr>
+                    <td>Source of the semen</td>
+                    <td>{{ form.source_of_semen }}</td>
+                </tr>
+                <tr>
+                    <td>Date of repeat check</td>
+                    <td>{{ form.date_of_repeat_checked }}</td>
+                </tr>
+                <tr>
+                    <td>Date of pregnancy</td>
+                    <td>{{ form.date_of_pregnancy_diagnosis }}</td>
+                </tr>
+                <tr>
+                    <td>expected date of calving</td>
+                    <td>{{ form.expected_date_of_calving }}</td>
+                </tr>
+                <tr>
+                    <td>Comment</td>
+                    <td>{{ form.Comment }}</td>
+                </tr>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Field</th>
+                <th>Value</th>
+            </tr>
+        </tfoot>
+    </table>
+    </div>
+</div>
+{% endfor %}
+</body>
+</html>
