@@ -351,17 +351,17 @@ class Vaccination_Form_Pdf(View):
 
     def get(self, request):
         try:
-            vaccination_form = Vaccination_Form.objects.filter(farmer_username=request.user)
+            vaccination_forms = Vaccination_Form.objects.filter(farmer_username=request.user)
         except:
             messages.warning(self.request, f'Sick approach form for {request.user} not available')
             return redirect('farmer-portal')
-        if vaccination_form:
+        if vaccination_forms:
             params = {
                 'today':timezone.now,
-                'form': vaccination_form,
+                'forms': vaccination_forms,
                 'request': request
             }
-            return Render.render('portals/vaccination_form.html', params)
+            return Render.render('portals/vaccination_pdf_form.html', params)
         else:
             messages.warning(self.request, f'No vaccination form available for {self.request.user}')
             return redirect('index') 
@@ -372,17 +372,17 @@ class Artificial_Insemination_Form_Pdf(View):
 
     def get(self, request):
         try:
-            Artificial_form = Artificial_Insemination_Form.objects.filter(farmer_username=request.user)
+            Artificial_forms = Artificial_Insemination_Form.objects.filter(farmer_username=request.user)
         except:
             messages.warning(self.request, f'Sick approach form for {request.user} not available')
             return redirect('farmer-portal')
-        if Artificial_form:
+        if Artificial_forms:
             params = {
                 'today':timezone.now,
-                'form': Artificial_form,
+                'forms': Artificial_forms,
                 'request': request
             }
-            return Render.render('portals/artificial_form.html', params)
+            return Render.render('portals/artificial_form_pdf.html', params)
         else:
             messages.warning(self.request, f'No artificial form available for {self.request.user}')
             return redirect('index') 
