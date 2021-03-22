@@ -289,17 +289,17 @@ class Dead_Form_Pdf(View):
 
     def get(self, request):
         try:
-            dead_form = Death_Approach_Form.objects.filter(farmer_username=request.user)
+            dead_forms = Death_Approach_Form.objects.filter(farmer_username=request.user)
         except:
             messages.warning(self.request, f'Sick approach form for {request.user} not available')
             return redirect('farmer-portal')
-        if dead_form:
+        if dead_forms:
             params = {
                 'today':timezone.now,
-                'form': dead_form,
+                'forms': dead_forms,
                 'request': request
             }
-            return Render.render('portals/dead_form.html',params)
+            return Render.render('portals/dead_form_pdf.html',params)
         else:
             messages.warning(self.request,f'No dead form available for {self.request.user}')
             return redirect('index')
@@ -309,39 +309,37 @@ class Surgical_Form_Pdf(View):
 
     def get(self, request):
         try:
-            surgical_form = Surgical_Approach_Form.objects.filter(farmer_username=request.user)
+            surgical_forms = Surgical_Approach_Form.objects.filter(farmer_username=request.user)
         except:
             messages.warning(self.request, f'Sick approach form for {request.user} not available')
             return redirect('farmer-portal')
-        if surgical_form:
+        if surgical_forms:
             params = {
                 'today':timezone.now,
-                'form': surgical_form,
+                'forms': surgical_forms,
                 'request': request
             }
-            return Render.render('portals/surgical_form.html',params)
+            return Render.render('portals/surgical_form_pdf.html',params)
         else:
             messages.warning(self.request,f'No surgical form available for {self.request.user}')
             return redirect('index')
-
-
 
 
 class Deworming_Form_Pdf(View):
 
     def get(self, request):
         try:
-            deworming_form = Deworming_Form.objects.filter(farmer_username=request.user)
+            deworming_forms = Deworming_Form.objects.filter(farmer_username=request.user)
         except:
             messages.warning(self.request, f'Sick approach form for {request.user} not available')
             return redirect('farmer-portal')
-        if deworming_form:
+        if deworming_forms:
             params = {
                 'today':timezone.now,
-                'form': deworming_form,
+                'forms': deworming_forms,
                 'request': request
             }
-            return Render.render('portals/deworming_form.html', params)
+            return Render.render('portals/deworming_form_pdf.html', params)
         else:
             messages.warning(self.request, f'No deworming form available for {self.request.user}')
             return redirect('index')    
