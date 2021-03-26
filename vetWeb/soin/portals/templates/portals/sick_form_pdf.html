@@ -82,19 +82,19 @@
             <tbody>
                 <tr>
                     <td>Species affected </td>
-                    <td>{{ form.species_affected }}</td>
+                    <td>{{ form.get_species_affected_display }}</td>
                 </tr>
                 <tr>
-                    <td>Species affected </td>
+                    <td>Number of Species affected </td>
                     <td>{{ form.num_of_species_affected }}</td>
                 </tr>
                 <tr>
-                    <td>Animal ID </td>
+                    <td>name of the animal/identification number </td>
                     <td>{{ form.id_animal }}</td>
                 </tr>
                 <tr>
-                    <td>Disease Nature</td>
-                    <td>{{ form.disease_nature }}</td>
+                    <td>nature of the disease</td>
+                    <td>{{ form.get_disease_nature_display }}</td>
                 </tr>
                 <tr>
                     <td>Clinical Signs</td>
@@ -113,7 +113,7 @@
                     <td>{{ form.final_diagnosis }}</td>
                 </tr>
                 <tr>
-                    <td>Sickness Duration </td>
+                    <td>duration of the sickness </td>
                     <td>{{ form.sickness_duration }}</td>
                 </tr>
                 <tr>
@@ -134,30 +134,30 @@
                 </tr>
                 <tr>
                     <td>Prognosis </td>
-                    <td>{{ form.prognosis }}</td>
+                    <td>{{ form.get_prognosis_display }}</td>
                 </tr>
                 <tr>
-                    <td>Harmony with clinic signs </td>
-                    <td>{{ form.harmony_with_clinic_signs_and_lab }}</td>
+                    <td>Were the pathological signs in harmony with the clinical signs and laboratory reports? </td>
+                    <td>{{ form.get_harmony_with_clinic_signs_and_lab_display }}</td>
                 </tr>
                 <tr>
-                    <td>Cause of Death </td>
-                    <td>{{ form.cause_of_death_if_in_no_harmony }}</td>
+                    <td>If no, what could be the cause of the death </td>
+                    <td>{{ form.get_cause_of_death_if_in_no_harmony_display }}</td>
                 </tr>
                 <tr>
-                    <td>Disease Zoonotic </td>
-                    <td>{{ form.disease_one_of_the_zoonotic }}</td>
+                    <td>is the disease one of the zoonotic?</td>
+                    <td>{{ form.get_disease_one_of_the_zoonotic_display }}</td>
                 </tr>
                 <tr>
-                    <td>Advise given(Disease Zoonotic) </td>
+                    <td>if yes, what advice did you give the owner and people who handled the carcass' </td>
                     <td>{{ form.advice_given_if_zoonotic }}</td>
                 </tr>
                 <tr>
-                    <td>Relapse </td>
-                    <td>{{ form.relapse }}</td>
+                    <td>was there any relapse?</td>
+                    <td>{{ form.get_relapse_display }}</td>
                 </tr>
                 <tr>
-                    <td>Cause if relapse </td>
+                    <td>if yes, what might be the cause </td>
                     <td>{{ form.cause_if_relapse }}</td>
                 </tr>
                 <tr>
@@ -172,9 +172,7 @@
                 </tr>
             </tfoot>
         </table>
-        <div class="card-header">      
-            <h3>form generated on: {{today}}</h3>
-        </div>
+       
     </div>
 </div>
 {% endfor %}

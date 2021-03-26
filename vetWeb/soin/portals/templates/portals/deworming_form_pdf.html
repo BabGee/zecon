@@ -61,11 +61,12 @@
     <div class="card">
         <h2 class="text-center">Deworming form  </h2>
         <div class="card-header">      
-            <h3>DATE : {{today}}</h3>
+            <h3>DATE : {{form.vet_form.report_created_on}}</h3>
         </div>
 
         <div class="list-group">
-            <p>Name: {{ request.user }}</p>     
+            <p>Vet Officer Name: {{form.vet_form.vet_username}} </p>
+            <p>Farmer Name {{ request.user }}</p>     
         </div>
 
         <table class="table">
@@ -90,7 +91,7 @@
                 </tr>
                 <tr>
                     <td>Body condition of the animal(s)</td>
-                    <td>{{ form.body_condition_of_the_animal }}</td>
+                    <td>{{ form.get_body_condition_of_the_animal_display }}</td>
                 </tr>
                 <tr>
                     <td>Date of Deworming</td>

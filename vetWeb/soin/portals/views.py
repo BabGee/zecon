@@ -249,7 +249,7 @@ def consultation(request):
         if form.is_valid():
             consultation_form = Vet_Forms(is_farm_consultation=True)
             consultation_form.save() 
-            consul_form = Vet_Forms(vet_username=request.user, is_farm_consultation_form=True)
+            consul_form = Vet_Forms(vet_username=request.user, is_farm_consultation=True)
             consul_form.save() 
             form.save()
             messages.success(request, 'Details  Succesfully Saved')
@@ -279,7 +279,7 @@ class Sick_Form_Pdf(View):
                 'forms': sick_forms,
                 'request': request
             }
-            return Render.render('portals/sick_form.html', params)
+            return Render.render('portals/sick_form_pdf.html', params)
         else:
             messages.warning(self.request, f'No Sick form available for {self.request.user}')
             return redirect('index')    
@@ -391,14 +391,14 @@ class Farm_Consultation_Form_Pdf(View):
 
     def get(self, request):
         try:
-            consultation_form = Farm_Consultation.objects.filter(farmer_username=request.user)
+            consultation_forms = Farm_Consultation.objects.filter(farmer_username=request.user)
         except:
             messages.warning(self.request, f'Sick approach form for {request.user} not available')
             return redirect('farmer-portal')
-        if consultation_form:
+        if consultation_forms:
             params = {
                 'today':timezone.now,
-                'form': consultation_form,
+                'forms': consultation_forms,
                 'request': request
             }
             return Render.render('portals/consultation_form.html', params)
@@ -410,11 +410,11 @@ class Farm_Consultation_Form_Pdf(View):
 class Pregnancy_Diagnosis_Form_Pdf(View):
 
     def get(self, request):
-        diagnosis_form = Pregnancy_Diagnosis_Form.objects.get(farmer_username=request.user)
-        if diagnosis_form:
+        diagnosis_forms = Pregnancy_Diagnosis_Form.objects.filter(farmer_username=request.user)
+        if diagnosis_forms:
             params = {
                 'today':timezone.now,
-                'form': diagnosis_form,
+                'forms': diagnosis_forms,
                 'request': request
             }
             return Render.render('portals/diagnosis_form.html', params)

@@ -62,11 +62,12 @@
     <div class="card">
         <h2 class="text-center">Farm Consultation </h2>
         <div class="card-header">      
-            <h3>DATE : {{today}}</h3>
+            <h3>DATE : {{form.vet_form.report_created_on}}</h3>
         </div>
 
         <div class="list-group">
-            <p>Name: {{ request.user }}</p>     
+            <p>Vet Officer Name: {{form.vet_form.vet_username}} </p>
+            <p>Farmer Name {{ request.user }}</p>    
         </div>
 
         <table class="table">
@@ -79,7 +80,7 @@
             <tbody>
                 <tr>
                     <td>Dairy cows unit</td>
-                    <td>{{ form.Dairy_cows }}</td>
+                    <td>{{ form.dairy_cows }}</td>
                 </tr>
                 <tr>
                     <td>Beef production unit</td>
@@ -95,11 +96,11 @@
                 </tr>
                 <tr>
                     <td>Goat production unit</td>
-                    <td>{{ form.Goat }}</td>
+                    <td>{{ form.goat }}</td>
                 </tr>
                 <tr>
                     <td>Canine keeping</td>
-                    <td>{{ form.Canine }}</td>
+                    <td>{{ form.canine }}</td>
                 </tr>
                 <tr>
                     <td>Other livestock</td>
@@ -107,7 +108,7 @@
                 </tr>
                 <tr>
                     <td>Give recommendation</td>
-                    <td>{{ form.Give_recommendation }}</td>
+                    <td>{{ form.give_recommendation }}</td>
                 </tr>
                 <tr>
                     <td>Grazing system and pasture management.</td>
@@ -127,7 +128,7 @@
                 </tr>
                 <tr>
                     <td>Is the farm manged by a veterinary officer or livestock officer?</td>
-                    <td>{{ form.by_veterinary_officer }}</td>
+                    <td>{{ form.get_farm_manager_display }}</td>
                 </tr>
                 <tr>
                     <td>If no,who is the farm consultant?</td>

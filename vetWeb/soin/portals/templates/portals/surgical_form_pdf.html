@@ -61,11 +61,12 @@
     <div class="card">
         <h2 class="text-center">Surgical form  </h2>
         <div class="card-header">      
-            <h3>DATE : {{today}}</h3>
+            <h3>DATE : {{form.vet_form.report_created_on}}</h3>
         </div>
 
         <div class="list-group">
-            <p>Name: {{ request.user }}</p>     
+            <p>Vet Officer Name: {{form.vet_form.vet_username}} </p>
+            <p>Farmer Name {{ request.user }}</p>     
         </div>
 
         <table class="table">
@@ -86,7 +87,7 @@
                 </tr>
                 <tr>
                     <td>Sex of the animal</td>
-                    <td>{{ form.sex_of_the_animal }}</td>
+                    <td>{{ form.get_sex_of_the_animal_display }}</td>
                 </tr>
                 <tr>
                     <td>Name or identification number</td>
@@ -94,7 +95,7 @@
                 </tr>
                 <tr>
                     <td>Nature of operation</td>
-                    <td>{{ form.operation_nature }}</td>
+                    <td>{{ form.get_operation_nature_display }}</td>
                 </tr>
                 <tr>
                     <td>If others, Specify</td>

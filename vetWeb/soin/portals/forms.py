@@ -25,6 +25,11 @@ class DeathApproachForm(ModelForm):
 		model = Death_Approach_Form
 		exclude = ['vet_form', 'report_created_on',]
 
+		widgets = {
+            'death_date': DateInput(attrs={'type': 'date'}),
+			'death_time': TimeInput(attrs={'type':'time'})
+        }
+
 
 class SurgicalApproachForm(ModelForm):
 	class Meta:
@@ -54,7 +59,7 @@ class VaccinationForm(ModelForm):
 		
 		widgets = {
             'date_of_vaccination': DateInput(attrs={'type': 'date'}),
-			'next_date_vaccination': DateInput(attrs={'type':'date'}),
+			'next_date_of_vaccination': DateInput(attrs={'type':'date'}),
         }
 
 
@@ -101,7 +106,7 @@ class PregnancyDiagnosisForm(ModelForm):
 		exclude = ['vet_form', 'report_created_on',]
 
 		widgets = {
-            'date_of_insemination ': DateInput(attrs={'type': 'date'}),
+            'date_of_insemination': DateInput(attrs={'type': 'date'}),
 			'date_of_pregnancy_diagnosis': DateInput(attrs={'type':'date'}),
 			'next_date_of_pregnancy_diagnosis' : DateInput(attrs={'type': 'date'}),
 			'expected_date_of_delivery' : DateInput(attrs={'type' : 'date'}),

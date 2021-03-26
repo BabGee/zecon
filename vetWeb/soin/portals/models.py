@@ -67,6 +67,10 @@ NATURE_CHOICES=(
  	('D','Dead')
  )
 
+FARM_MANAGER = (
+	('V', 'Veterinary Officer'),
+	('L', 'Livestock Officer')
+)
 
 COW_CATEGORY=(
 	('A','Adult'),
@@ -127,7 +131,7 @@ class Sick_Approach_Form(models.Model):
 	differential_diagnosis = models.CharField(max_length=100, null=True, blank=True)
 	final_diagnosis = models.CharField(max_length=100)
 	sickness_duration = models.CharField(max_length=100, verbose_name='duration of the sickness')
-	sickness_history = models.CharField(max_length=100, null=True, blank=True)
+	sickness_history = models.TextField(max_length=300, null=True, blank=True)
 	drug_of_choice = models.CharField(max_length=100, null=True, blank=True)
 	treatment_duration = models.CharField(max_length=100)
 	start_dose_date = models.DateField()
@@ -141,18 +145,19 @@ class Sick_Approach_Form(models.Model):
 	comment = models.CharField(max_length=300,null=True,blank=True,verbose_name='comment')
 	
 	def __str__(self):
-		return self.farmer_username
+		return self.vet_form
 	
 
 class Death_Approach_Form(models.Model):
 	vet_form = models.OneToOneField(Vet_Forms, on_delete=models.CASCADE, primary_key=True)
 	farmer_username = models.CharField(max_length=12,verbose_name='Farmer Username')
 	name_of_the_animal = models.CharField(max_length=30,null=True,blank=True,verbose_name='Name or identification number')
-	sex_of_the_animal = models.CharField(max_length=20,choices=SEX_CHOICES,default='M',verbose_name='Sex of the animal')
+	sex_of_the_animal = models.CharField(max_length=20,choices=SEX_CHOICES,default='',verbose_name='Sex of the animal')
 	num_of_species_dead = models.IntegerField(default=1,null=True,verbose_name='Number of animals dead')
-	case_history = models.CharField(max_length=100, default='When was the case reported')
-	mortality_rate = models.CharField(max_length=100, default='State the mortality rate of the case reported')
-	death_time = models.DateField(verbose_name='At what time the animal the animals died')
+	case_history = models.CharField(max_length=100, default='')
+	mortality_rate = models.CharField(max_length=100, default='')
+	death_date = models.DateField(verbose_name='Date the animal died')
+	death_time = models.TimeField(verbose_name='At what time the animal the animals died')
 	signs_of_cadever_on_the_ground = models.CharField(max_length=200,verbose_name='What are the signs of signs of the cadever on the ground')
 	carcass_opened_for_the_pm = models.CharField(max_length=5, choices=YES_NO_CHOICES,default='Y',verbose_name='Did you open up the carcass fo PM?')
 	if_yes_pathological_signs = models.CharField(max_length=100, null=True, blank=True,verbose_name='If yes,what were the signs of the pathological conditions?')
@@ -173,7 +178,7 @@ class Surgical_Approach_Form(models.Model):
 	farmer_username = models.CharField(max_length=12,verbose_name='Farmer Username', default='')
 	species_operated_on = models.CharField(max_length=20, choices=SPECIES_CHOICES, default='0',verbose_name='Animal species affected')
 	if_other_specify = models.CharField(max_length=100, null=True, blank=True,verbose_name='If,other specify.')
-	sex_of_the_animal = models.CharField(max_length=20,choices=SEX_CHOICES, default='M', verbose_name='Sex of the animal')
+	sex_of_the_animal = models.CharField(max_length=20,choices=SEX_CHOICES, default='', verbose_name='Sex of the animal')
 	name_of_the_animal = models.CharField(max_length=30,null=True,blank=True,verbose_name='Name or identification number')
 	operation_nature= models.CharField(max_length=20, choices=OPERATION_CHOICES,default='C', verbose_name='Nature of operation')
 	if_other_specify = models.CharField(max_length=100, null=True, blank=True)
@@ -196,7 +201,7 @@ class Deworming_Form(models.Model):
 	date_of_deworming = models.DateField()
 	drug_choices = models.CharField(max_length=100, default='',verbose_name='Drug of choice')
 	target_parasites = models.CharField(max_length=100, null=True, blank=True,verbose_name='Target parasite')
-	withdrawal_period = models.DurationField()
+	withdrawal_period = models.CharField(max_length=100)
 	side_effects = models.CharField(max_length=100, null=True, blank=True,verbose_name='Any side effect?')
 	next_date_deworming = models.DateField(verbose_name='Next date of deworming')
 	comment = models.CharField(max_length=100, null=True, blank=True)
@@ -220,7 +225,7 @@ class Vaccination_Form(models.Model):
 	targetted_disease = models.CharField(max_length=20,null=True,verbose_name='The disease target')
 	vaccines_used = models.CharField(max_length=100, null=True, blank=True,verbose_name='Vaccine used')
 	date_of_vaccination = models.DateField(verbose_name='Date of vaccination')
-	next_date_of_vaccination = models.DateTimeField(verbose_name='Next date of vaccination')
+	next_date_of_vaccination = models.DateField(verbose_name='Next date of vaccination')
 	name_of_the_crush = models.CharField(max_length=100, null=True, blank=True,verbose_name='Name of the crush')
 	nature_of_the_vacination_program = models.CharField(max_length=200, choices=VACCINATION_CHOICES, default='M',verbose_name='Nature of the vaccination program')
 	comment = models.CharField(max_length=100, null=True, blank=True)
@@ -235,8 +240,8 @@ class Artificial_Insemination_Form(models.Model):
 	farmer_username = models.CharField(max_length=12,verbose_name='Farmer Username')
 	Name_of_the_cow = models.CharField(max_length=12,verbose_name='Name of the cow or identification number of the cow')
 	time_of_heat_sign = models.TimeField(verbose_name='Time of heat sign')
-	time_of_insemination = models.TimeField(verbose_name='Time of insemination')
 	date_of_insemination = models.DateField(verbose_name='Date of insemination')
+	time_of_insemination = models.TimeField(verbose_name='Time of insemination')
 	nature_of_the_breeding = models.CharField(max_length=100, null=True, blank=True,verbose_name='Nature of breeding')
 	sire_name = models.CharField(max_length=200,null=True,blank=True,verbose_name='Sire`s name')
 	sire_origin = models.CharField(max_length=200,null=True,blank=True,verbose_name='Sire origin')
@@ -320,7 +325,7 @@ class Pregnancy_Diagnosis_Form(models.Model):
 class Farm_Consultation(models.Model):
 	vet_form = models.OneToOneField(Vet_Forms, on_delete=models.CASCADE, primary_key=True)
 	farmer_username = models.CharField(max_length=12,verbose_name='Farmer Username')
-	Dairy_cows = models.CharField(max_length=12,null=True,blank=True,verbose_name='Dairy cows unit')
+	dairy_cows = models.CharField(max_length=12,null=True,blank=True,verbose_name='Dairy cows unit')
 	beef_production = models.CharField(max_length=20,null=True,blank=True,verbose_name='Beef production unit')
 	poultry = models.CharField(max_length=30,null=True,blank=True,verbose_name='Poultry production unit')
 	sheep = models.CharField(max_length=50,null=True,blank=True,verbose_name='Sheep production unit')
@@ -332,7 +337,7 @@ class Farm_Consultation(models.Model):
 	disease = models.CharField(max_length=100, null=True, blank=True,verbose_name='Disease control.')
 	farm = models.CharField(max_length=100, null=True, blank=True, verbose_name='Farm biosecurity')
 	culling_selection = models.CharField(max_length=100, null=True,blank=True, verbose_name='Culling and Selection.')
-	by_veterinary_officer = models.CharField(max_length=20, choices=YES_NO_CHOICES, default='Y',verbose_name='Is the farm manged by a veterinary officer or livestock officer?')
+	farm_manager = models.CharField(max_length=20, choices=FARM_MANAGER, default='',verbose_name='Is the farm managed by a veterinary officer or livestock officer?')
 	if_no = models.CharField(max_length=100, null=True,blank=True, verbose_name='If no,who is the farm consultant?')
 	name_incharge = models.CharField(max_length=100, null=True, blank=True,verbose_name='Name of the veterinary officer incharge.')
 	reg_number = models.CharField(max_length=100, null=True, blank=True,verbose_name='Registration number.')

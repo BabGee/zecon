@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Pregnancy Diagnosis Form </title>
+    <title>Death Form </title>
     <style type="text/css">
         @page {
             size: A4;
@@ -62,11 +62,12 @@
     <div class="card">
         <h2 class="text-center">Death form  </h2>
         <div class="card-header">      
-            <h3>DATE : {{today}}</h3>
+            <h3>DATE : {{form.vet_form.report_created_on}}</h3>
         </div>
 
         <div class="list-group">
-            <p>Name: {{ request.user }}</p>     
+            <p>Vet Officer Name: {{form.vet_form.vet_username}} </p>
+            <p>Farmer Name {{ request.user }}</p>     
         </div>
 
         <table class="table">
@@ -83,7 +84,7 @@
                 </tr>
                 <tr>
                     <td>Sex of the animal</td>
-                    <td>{{ form.sex_of_the_animal }}</td>
+                    <td>{{ form.get_sex_of_the_animal_display }}</td>
                 </tr>
                 <tr>
                     <td>Number of animals dead</td>
@@ -107,7 +108,7 @@
                 </tr>
                 <tr>
                     <td>Did you open up the carcass fo PM?</td>
-                    <td>{{ form.carcass_opened_for_the_pm }}</td>
+                    <td>{{ form.get_carcass_opened_for_the_pm_display }}</td>
                 </tr>
                 <tr>
                     <td>If yes,what were the signs of the pathological conditions?</td>
@@ -119,7 +120,7 @@
                 </tr>
                 <tr>
                     <td>Did you send any sample to the laboratory?</td>
-                    <td>{{ form.sample_sent_lab }}</td>
+                    <td>{{ form.get_sample_sent_lab_display }}</td>
                 </tr>
                 <tr>
                     <td>if yes,what was the laboratory report?</td>
@@ -127,7 +128,7 @@
                 </tr>
                 <tr>
                     <td>Is the cause of dead notifiable?</td>
-                    <td>{{ form.death_cause_notifiable }}</td>
+                    <td>{{ form.get_death_cause_notifiable_display }}</td>
                 </tr>
                 <tr>
                     <td>If yes,send message to the relevant body.</td>
