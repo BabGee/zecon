@@ -9,7 +9,7 @@ class User(AbstractUser):
 	first_name = models.CharField(max_length=100)
 	last_name = models.CharField(max_length=100)
 	email = models.EmailField(null=True, blank=True)
-	phone_number = models.CharField(max_length=12)
+	phone_number = models.CharField(max_length=13)
 	
 class Vet_Officer(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)

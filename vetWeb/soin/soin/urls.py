@@ -27,11 +27,13 @@ urlpatterns = [
     path('', include('vet.urls')),
     path('admin/', admin.site.urls, name='admin-vet'),
     #users sign up
-    path('user/signup/vet_officer/', user_views.VetOfficerSignUpView.as_view(), name='vet-register'),
-    path('user/signup/farmer/',user_views.FarmerSignUpView.as_view(),name='farmer_register'),
-    path('user/signup/student/',user_views.StudentSignUpView.as_view(),name='student_register'),
+    path('user/signup/vet_officer/', user_views.vet0fficer_signup_view, name='vet-register'),
+    path('user/signup/farmer/',user_views.farmer_signup_view,name='farmer-register'),
+    path('user/signup/student/',user_views.student_signup_view,name='student-register'),
     #users login 
-    path('user/login/',user_views.user_login,name='login'),
+    path('vet/login/',user_views.vet_login,name='vet-login'),
+    path('farmer/login/',user_views.farmer_login,name='farmer-login'),
+    path('student/login/',user_views.student_login,name='student-login'),
     path('logout/', user_views.user_logout, name='logout'),
 
     #users portals
