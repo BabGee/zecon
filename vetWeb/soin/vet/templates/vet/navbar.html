@@ -40,11 +40,11 @@
 
           <li><a href="{% url 'services' %}">Services</a></li>
           {% if not user.is_authenticated %}
-            <li class="drop-down"><a href="#">Portal</a>
+            <li class="drop-down"><a href="#">Accounts</a>
               <ul>
-                <li><a href="{% url 'vet-register' %}">Vet Officer</a></li>
-                  <li><a href="{% url 'farmer_register' %}">Farmer</a></li>
-                <li><a href="{% url 'student_register' %}">Student</a></li>
+                <li><a href="{% url 'vet-login' %}">Vet Officer Login</a></li>
+                  <li><a href="{% url 'farmer-login' %}">Farmer Login</a></li>
+                <li><a href="{% url 'student-login' %}">Student Login</a></li>
               </ul>
             </li>
           {% else %}
