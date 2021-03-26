@@ -62,11 +62,12 @@
     <div class="card">
         <h2 class="text-center"> Vaccination pdf  </h2>
         <div class="card-header">      
-            <h3>DATE : {{today}}</h3>
+            <h3>DATE : {{form.vet_form.report_created_on}}</h3>
         </div>
 
         <div class="list-group">
-            <p>Name: {{ request.user }}</p>     
+            <p>Vet Officer Name: {{form.vet_form.vet_username}} </p>
+            <p>Farmer Name {{ request.user }}</p>     
         </div>
 
         <table class="table">
@@ -111,7 +112,7 @@
                 </tr>
                 <tr>
                     <td>Sex of the calf born</td>
-                    <td>{{ form.sex_of_the_calf_born }}</td>
+                    <td>{{ form.get_sex_of_the_calf_born_display }}</td>
                 </tr>
                 <tr>
                     <td>Date of birth</td>
@@ -119,7 +120,7 @@
                 </tr>
                 <tr>
                     <td>Nature of birth</td>
-                    <td>{{ form.nature_of_birth }}</td>
+                    <td>{{ form.get_nature_of_birth_display }}</td>
                 </tr>
                 <tr>
                     <td>Number of repeat</td>

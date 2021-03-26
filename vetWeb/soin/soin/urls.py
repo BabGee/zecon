@@ -51,20 +51,21 @@ urlpatterns = [
     path('calf_registration', portal_views.calf_registration, name='calf-registration'),
     path('livestock_inventory', portal_views.livestock_inventory, name='livestock-inventory'),
     path('consultation',portal_views.consultation,name='consultation'),
-    path('sickform/', login_required(portal_views.Sick_Form_Pdf.as_view()), name='sickform'),
-    path('deadform/', login_required(portal_views.Dead_Form_Pdf.as_view()), name='deadformpdf'),
-    path('surgicalform/', login_required(portal_views.Surgical_Form_Pdf.as_view()), name='surgicalformpdf'),
-    path('dewormingform/', login_required(portal_views.Deworming_Form_Pdf.as_view()), name='dewormingformpdf'),
-    path('artificialform/', login_required(portal_views.Artificial_Insemination_Form_Pdf.as_view()), name='artificialform'),
-    path('vaccinationform/', login_required(portal_views.Vaccination_Form_Pdf.as_view()), name='vaccinationform'),
-    path('deadform/', login_required(portal_views.Dead_Form_Pdf.as_view()), name='deadform'),
-    path('surgicalform/', login_required(portal_views.Surgical_Form_Pdf.as_view()), name='surgicalform'),
-    path('dewormingform/', login_required(portal_views.Deworming_Form_Pdf.as_view()), name='dewormingform'),
-    path('artificialform/', login_required(portal_views.Artificial_Insemination_Form_Pdf.as_view()), name='artificialformpdf'),
+    #Farmer fetching forms pdf
+    path('sickformpdf/', login_required(portal_views.Sick_Form_Pdf.as_view()), name='sickformpdf'),
+    path('deadformpdf/', login_required(portal_views.Dead_Form_Pdf.as_view()), name='deadformpdf'),
+    path('surgicalformpdf/', login_required(portal_views.Surgical_Form_Pdf.as_view()), name='surgicalformpdf'),
+    path('dewormingformpdf/', login_required(portal_views.Deworming_Form_Pdf.as_view()), name='dewormingformpdf'),
+    path('artificialformpdf/', login_required(portal_views.Artificial_Insemination_Form_Pdf.as_view()), name='artificialformpdf'),
+    path('vaccinationformpdf/', login_required(portal_views.Vaccination_Form_Pdf.as_view()), name='vaccinationformpdf'),
+    path('deadformpdf/', login_required(portal_views.Dead_Form_Pdf.as_view()), name='deadformpdf'),
+    path('surgicalformpdf/', login_required(portal_views.Surgical_Form_Pdf.as_view()), name='surgicalformpdf'),
+    path('dewormingformpdf/', login_required(portal_views.Deworming_Form_Pdf.as_view()), name='dewormingformpdf'),
+    path('artificialformpdf/', login_required(portal_views.Artificial_Insemination_Form_Pdf.as_view()), name='artificialformpdf'),
     path('vaccinationpdf/', login_required(portal_views.Vaccination_Form_Pdf.as_view()), name='vaccinationformpdf'),
-    path('consultationform/', login_required(portal_views.Farm_Consultation_Form_Pdf.as_view()), name='consultationform'),
-    path('pregnancyform/', login_required(portal_views.Pregnancy_Diagnosis_Form_Pdf.as_view()), name='pregnancyform'),
-    path('gallery/', portal_views.display_images, name='display-images')
+    path('consultationformpdf/', login_required(portal_views.Farm_Consultation_Form_Pdf.as_view()), name='consultationformpdf'),
+    path('pregnancyformpdf/', login_required(portal_views.Pregnancy_Diagnosis_Form_Pdf.as_view()), name='pregnancyformpdf'),
+    path('gallerypdf/', portal_views.display_images, name='display-images')
 
 ]
 

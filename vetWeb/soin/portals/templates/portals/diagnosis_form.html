@@ -57,15 +57,17 @@
 </head>
 <body>
 
+    {% for form in forms %}
 <div class="container">
     <div class="card">
         <h2 class="text-center">Prognosis Diagnosis </h2>
         <div class="card-header">      
-            <h3>DATE : {{today}}</h3>
+            <h3>DATE : {{form.vet_form.report_created_on}}</h3>
         </div>
 
         <div class="list-group">
-            <p>Name: {{ request.user }}</p>     
+            <p>Vet Officer Name: {{form.vet_form.vet_username}} </p>
+            <p>Farmer Name {{ request.user }}</p>     
         </div>
 
         <table class="table">
@@ -82,7 +84,7 @@
                 </tr>
                 <tr>
                     <td>Cow`s category</td>
-                    <td>{{ form.cow_category }}</td>
+                    <td>{{ form.get_cow_category_display }}</td>
                 </tr>
                 <tr>
                     <td>Date of insemination</td>
@@ -94,7 +96,7 @@
                 </tr>
                 <tr>
                     <td>Results of diagnosis</td>
-                    <td>{{ form.result_of_diagnosis }}</td>
+                    <td>{{ form.get_result_of_diagnosis_display }}</td>
                 </tr>
                 <tr>
                     <td>If the result is positive give the approximate age of the fetus.</td>
@@ -127,6 +129,6 @@
     </table>
 </div>
 </div>
-
+    {% endfor %}
 </body>
 </html>
