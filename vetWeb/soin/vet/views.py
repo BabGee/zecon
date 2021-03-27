@@ -20,4 +20,7 @@ def contact(request):
     return render(request, 'vet/contact.html')  
 
 def team(request):
-    return render(request, 'vet/team.html')        
+    return render(request, 'vet/team.html')   
+
+def events(request):
+    return render(request, 'vet/events.html')   
