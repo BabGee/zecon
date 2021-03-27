@@ -422,6 +422,35 @@ class Pregnancy_Diagnosis_Form_Pdf(View):
             messages.warning(self.request, f'No pregnancy form available for {self.request.user}')
             return redirect('index') 
 
+class Calf_Registration_Form_Pdf(View):
+
+    def get(self, request):
+        calf_reg_forms = Calf_Registration_Form.objects.filter(farmer_username=request.user)
+        if calf_reg_forms:
+            params = {
+                'today':timezone.now,
+                'forms': calf_reg_forms,
+                'request': request
+            }
+            return Render.render('portals/calf_reg_form.html', params)
+        else:
+            messages.warning(self.request, f'No Calf registration form available for {self.request.user}')
+            return redirect('index') 
+
+class Livestock_Form_Pdf(View):
+
+    def get(self, request):
+        livestock_forms = Livestock_Inventory_Form.objects.filter(farmer_username=request.user)
+        if livestock_forms:
+            params = {
+                'today':timezone.now,
+                'forms': livestock_forms,
+                'request': request
+            }
+            return Render.render('portals/livestock_form.html', params)
+        else:
+            messages.warning(self.request, f'No Livestock form available for {self.request.user}')
+            return redirect('index') 
 
 
 
