@@ -333,7 +333,7 @@ section {
 
 .page-content--bge5 {
     background: #e5e5e5;
-    height: 150vh;
+    height: 250vh;
 }
 
 .login-wrap {
@@ -385,7 +385,7 @@ section {
 }
 
 .login-content {
-    background: #fff;
+    background:#95b1de;
     padding: 30px 30px 20px;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
