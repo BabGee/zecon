@@ -1,106 +1,54 @@
-{% load static %}
-
-<aside class="main-sidebar">
-    <!-- sidebar -->
-    <div class="sidebar">
-        <!-- Sidebar user panel -->
-        <div class="user-panel">
-            <div class="image pull-left">
-                <img src="{{user.profile.image.url}}" class="img-circle" alt="User Image">
-            </div>
-            <div class="info">
-                <h4>Welcome</h4>
-                <p>{{user.username|default:'Guest' }}!</p>
-            </div>
-        </div>
-
-        <!-- sidebar menu -->
-        <ul class="sidebar-menu">
-            <li class="active">
-                <a href="{% url 'index' %}"><i class="fa fa-hospital-o"></i><span>Farmer Dashboard</span>
-                </a>
+<div class="menu-sidebar__content js-scrollbar1">
+    <nav class="navbar-sidebar">
+        <ul class="list-unstyled navbar__list">
+            <li class="active has-sub">
+                <a class="js-arrow" href="#">
+                    <i class="fas fa-tachometer-alt"></i>Dashboard</a>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-user-md"></i><span>{{user.username}} Details</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="">Profile</a></li>
-                    <!-- <li><a href="#">Refferal Link</a></li> -->
-                    <li><a href="">Change_password?</a></li>
-                </ul>
+            <li>
+                <a href="{% url 'calf-registration' %}">
+                    <i class="far fa-check-square"></i>Calf Registration Form</a>
             </li>
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-user"></i><span>Farm Inventory</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{% url 'calf-registration' %}">Calf Registration Form</a></li>
-                    <li><a href="{% url 'livestock-inventory' %}">Livestock Inventory Form</a></li>       
-                </ul>
+            <li>
+                <a href="{% url 'livestock-inventory' %}">
+                    <i class="far fa-check-square"></i>Livestock Inventory Form</a>
             </li>
-
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-user"></i><span>Form Records</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{% url 'sickformpdf' %}">Sick Approach Form</a></li>        
-                    <li><a href="{% url 'deadformpdf' %}">DeadApproachForm</a></li>
-                    <li><a href="{% url 'surgicalformpdf' %}"> Surgical Approach Form</a></li> 
-                    <li><a href="{% url 'dewormingformpdf' %}">Deworming Form</a></li>
-                    <li><a href="{% url 'vaccinationformpdf' %}">Vaccination Form</a></li>
-                    <li><a href="{% url 'artificialformpdf' %}">ArtificialInseminationForm</a></li>     
-                    <li><a href="{% url 'consultationformpdf' %}">FarmConsultationForm</a></li>                
-                    <li><a href="{% url 'pregnancyformpdf' %}">PregnancyDiagnosisForm</a></li>
-                    <li><a href="{% url 'calfregformpdf' %}">CalfRegistrationForm</a></li>     
-                </ul>
+            <li>
+                <a href="{% url 'sickformpdf' %}">
+                    <i class="far fa-check-square"></i>SickApproachFormPDF</a>
             </li>
-
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-user"></i><span>Gallery</span>
-                </a>
+            <li>
+                <a href="{% url 'deadformpdf' %}">
+                    <i class="far fa-check-square"></i>DeadApproachFormPDF</a>
             </li>
-
-
-        </li>
-    </li>
+            <li>
+                <a href="{% url 'surgicalformpdf' %}">
+                    <i class="far fa-check-square"></i>SurgicalApproachFormPDF</a>
+            </li>
+            <li>
+                <a href="{% url 'dewormingformpdf' %}">
+                    <i class="far fa-check-square"></i>DewormingFormPDF</a>
+            </li>
+            <li>
+                <a href="{% url 'vaccinationformpdf' %}">
+                    <i class="far fa-check-square"></i>VaccinationFormPDF</a>
+            </li>
+            <li>
+                <a href="{% url 'artificialformpdf' %}">
+                    <i class="far fa-check-square"></i>ArtificialInseminationPDF</a>
+            </li>
+            <li>
+                <a href="{% url 'consultationformpdf' %}">
+                    <i class="far fa-check-square"></i>FarmConsultationPDF</a>
+            </li>
+            <li>
+                <a href="{% url 'pregnancyformpdf' %}">
+                    <i class="far fa-check-square"></i>PregnancyDiagnosisPDF</a>
+            </li>
+            <li>
+                <a href="{% url 'calfregformpdf' %}">
+                    <i class="far fa-check-square"></i>CalfRegistrationFormPDF</a>
+            </li>
         </ul>
-</div> <!-- /.sidebar -->
-</aside>
-
-
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-         <form action="#" method="get" class="sidebar-form search-box pull-right hidden-md hidden-lg hidden-sm">
-                <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                        <button type="submit" name="search" id="search-btn" class="btn"><i class="fa fa-search"></i></button>
-                    </span>
-                </div>
-            </form>
-        <div class="header-icon">
-            <i class="fa fa-tachometer"></i>
-        </div>
-        <div class="header-title">
-            <h1> SoinVet</h1>
-            <small> Dashboard </small>
-            <ol class="breadcrumb hidden-xs">
-                <li><a href="{% url 'index' %}"><i class="pe-7s-home"></i> Home</a></li>
-                <li class="active">Dashboard</li>
-            </ol>
-        </div>
-    </section>
-
+    </nav>
+</div>

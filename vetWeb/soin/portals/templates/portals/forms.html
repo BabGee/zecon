@@ -4,45 +4,51 @@
 
 {% load crispy_forms_tags %}
 
-{% block title %} SoinVet|Home {% endblock %}
+{% block title %} {{request.user}} Portal {% endblock %}
 
 {% block content %}
 
-<!-- =============================================== -->
-    <!-- Left side column. contains the sidebar -->
-    {% include 'portals/sidebarVet.html' %}
-    <!-- =============================================== -->
-    <!-- Content Wrapper. Contains page content -->
-<!-- =============================================== -->
-                
-
-    <section class="content">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-lg-12">
-                <form class="user" method="POST">
-                    {% csrf_token %}
-                    {% for non_field_error in form.non_field_errors %}
-                      <p class="alert-danger">{{ non_field_error }}</p>
-                    {% endfor %}
-
-                   {% for field in form %}
-                      {% if field.errors %}
-                        {% for error in field.errors %}
-                          <div class="alert alert-danger" role="alert">
-                            <p>{{error}}</p>
-                          </div>
-                        {% endfor %}
-                      {% endif %}
-                   {% endfor %}
-                   
-                   {{form|crispy}}
-                   
-                  <div class="form-group">
-                    <button class="btn btn-primary" type="submit">Submit Details</button>
-                  </div>
-                  </form>
+<div class="page-wrapper">
+    <div class="page-content--bge5">
+        <div class="container">
+            <div class="login-wrap">
+                <div class="login-content">
+                    <div class="login-logo">
+                        <a href="#">
+                            <img src="{% static 'portals/images/icon/logo.png' %}" alt="CoolAdmin">
+                        </a>
+                    </div>
+                    <div class="login-form">
+                        <form class="user" method="POST">
+                            {% csrf_token %}
+                            {% for non_field_error in form.non_field_errors %}
+                              <p class="alert-danger">{{ non_field_error }}</p>
+                            {% endfor %}
+        
+                           {% for field in form %}
+                              {% if field.errors %}
+                                {% for error in field.errors %}
+                                  <div class="alert alert-danger" role="alert">
+                                    <p>{{error}}</p>
+                                  </div>
+                                {% endfor %}
+                              {% endif %}
+                           {% endfor %}
+                           <div class="form-group">
+                            {{form|crispy}}
+                           </div>
+                    <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Submit Details</button>
+                        </form>             
+                    </div>
+                </div>
             </div>
-         </div>   
-    </section> 
+        </div>
+    </div>
 
-{% endblock content %}    
+</div>      
+
+
+
+
+
+{% endblock content %}
