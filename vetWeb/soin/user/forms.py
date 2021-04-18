@@ -42,7 +42,7 @@ class VetOfficerSignUpForm(UserCreationForm):
 	kvb_number = forms.CharField()
 	
 	password1 = forms.CharField(
-		label='',
+		label='Password',
 		max_length=30,
 		min_length=8,
 		required=True,
@@ -55,7 +55,7 @@ class VetOfficerSignUpForm(UserCreationForm):
 	)
 
 	password2 = forms.CharField(
-		label='',
+		label='Confirm Password',
 		max_length=30,
 		min_length=8,
 		required=True,
@@ -98,6 +98,32 @@ class FarmerSignUpForm(UserCreationForm):
 	phone_number = forms.RegexField(regex='^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$', max_length=13)
 	farm_name  = forms.CharField(max_length=20)
 	location = forms.CharField(max_length=30)
+	password1 = forms.CharField(
+		label='Password',
+		max_length=30,
+		min_length=8,
+		required=True,
+		widget=forms.PasswordInput(
+			attrs={
+				'placeholder': 'Password',
+				'class': 'form-control'
+			}
+		)
+	)
+
+	password2 = forms.CharField(
+		label='Confirm Password',
+		max_length=30,
+		min_length=8,
+		required=True,
+		widget=forms.PasswordInput(
+			attrs={
+				'placeholder': 'Confirm Password',
+				'class': 'form-control'
+			}
+		)
+	)
+
 
 	class Meta(UserCreationForm.Meta):
 		model = User

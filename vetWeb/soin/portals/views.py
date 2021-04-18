@@ -199,7 +199,7 @@ def calf_registration(request):
         'form':form,
         'name':'Calf Registration Form'
          }
-    return render(request, 'portals/farmerforms.html', context) 
+    return render(request, 'portals/forms.html', context) 
 
 @user_passes_test(farmer_check, login_url='login')
 def livestock_inventory(request):
@@ -219,7 +219,7 @@ def livestock_inventory(request):
         'form':form,
         'name':'Livestock Inventory Form',
          }
-    return render(request, 'portals/farmerforms.html', context) 
+    return render(request, 'portals/forms.html', context) 
 
 @user_passes_test(vet_check, login_url='login')
 def pregnancy_diagnosis(request):

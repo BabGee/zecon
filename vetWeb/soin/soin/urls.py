@@ -23,8 +23,11 @@ from django.conf import settings
 
 from django.contrib.auth.decorators import login_required
 
+from django.contrib.auth import views as auth_views
+
 urlpatterns = [
     path('', include('vet.urls')),
+    path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls, name='admin-vet'),
     #users sign up
     path('user/signup/vet_officer/', user_views.vet0fficer_signup_view, name='vet-register'),
@@ -35,6 +38,11 @@ urlpatterns = [
     path('farmer/login/',user_views.farmer_login,name='farmer-login'),
     path('student/login/',user_views.student_login,name='student-login'),
     path('logout/', user_views.user_logout, name='logout'),
+    #password reset
+    path("password-reset", auth_views.PasswordResetView.as_view(template_name="user/password_reset.html"), name="password_reset"),
+    path("password-reset/done/", auth_views.PasswordResetDoneView.as_view(template_name="user/password_reset_done.html"), name="password_reset_done"),
+    path("password-reset-confirm/<uidb64>/<token>", auth_views.PasswordResetConfirmView.as_view( template_name="user/password_reset_confirm.html"), name="password_reset_confirm"),
+    path("password-reset-complete/", auth_views.PasswordResetCompleteView.as_view(template_name="user/password_reset_complete.html"), name="password_reset_complete"),
 
     #users portals
     path('vet_portal/', portal_views.portal_vet, name='vet-portal'),
