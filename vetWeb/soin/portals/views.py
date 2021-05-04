@@ -40,7 +40,7 @@ def portal_farmer(request):
     context = {
         'all_vets': vet_officers
     }
-    return render(request, 'portals/indexFarmer.html', context)
+    return render(request, 'portals/dashboard.html', context)
 
 @user_passes_test(student_check, login_url='login')
 def portal_student(request):
