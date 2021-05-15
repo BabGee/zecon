@@ -1,54 +1,81 @@
-<div class="menu-sidebar__content js-scrollbar1">
-    <nav class="navbar-sidebar">
-        <ul class="list-unstyled navbar__list">
-            <li class="active has-sub">
-                <a class="js-arrow" href="#">
-                    <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-            </li>
-            <li>
-                <a href="{% url 'calf-registration' %}">
-                    <i class="far fa-check-square"></i>Calf Registration Form</a>
-            </li>
-            <li>
-                <a href="{% url 'livestock-inventory' %}">
-                    <i class="far fa-check-square"></i>Livestock Inventory Form</a>
-            </li>
-            <li>
-                <a href="{% url 'sickformpdf' %}">
-                    <i class="far fa-check-square"></i>SickApproachFormPDF</a>
-            </li>
-            <li>
-                <a href="{% url 'deadformpdf' %}">
-                    <i class="far fa-check-square"></i>DeadApproachFormPDF</a>
-            </li>
-            <li>
-                <a href="{% url 'surgicalformpdf' %}">
-                    <i class="far fa-check-square"></i>SurgicalApproachFormPDF</a>
-            </li>
-            <li>
-                <a href="{% url 'dewormingformpdf' %}">
-                    <i class="far fa-check-square"></i>DewormingFormPDF</a>
-            </li>
-            <li>
-                <a href="{% url 'vaccinationformpdf' %}">
-                    <i class="far fa-check-square"></i>VaccinationFormPDF</a>
-            </li>
-            <li>
-                <a href="{% url 'artificialformpdf' %}">
-                    <i class="far fa-check-square"></i>ArtificialInseminationPDF</a>
-            </li>
-            <li>
-                <a href="{% url 'consultationformpdf' %}">
-                    <i class="far fa-check-square"></i>FarmConsultationPDF</a>
-            </li>
-            <li>
-                <a href="{% url 'pregnancyformpdf' %}">
-                    <i class="far fa-check-square"></i>PregnancyDiagnosisPDF</a>
-            </li>
-            <li>
-                <a href="{% url 'calfregformpdf' %}">
-                    <i class="far fa-check-square"></i>CalfRegistrationFormPDF</a>
-            </li>
-        </ul>
-    </nav>
-</div>
+<div class="logo">
+    <a href="{% url 'index' %}" class="simple-text logo-normal">
+      Soin Veterinary
+    </a>
+  </div>
+  <div class="sidebar-wrapper" id="sidebar-wrapper">
+    <ul class="nav">
+      <li class="active ">
+        <a href="{% url 'farmer-portal' %}">
+          <i class="now-ui-icons design_app"></i>
+          <p>Dashboard</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'calf-registration' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>Calf Registration Form</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'livestock-inventory' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>Livestock Inventory Form</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'sickformpdf' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>SickApproachFormPDF</p>
+        </a> 
+      </li>
+      <li>
+        <a href="{% url 'deadformpdf' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>DeadApproachFormPDF</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'surgicalformpdf' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>SurgicalApproachFormPDF</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'dewormingformpdf' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>DewormingFormPDF</p>
+        </a>
+      </li>
+       <li>
+        <a href="{% url 'vaccinationformpdf' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>VaccinationFormPDF</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'artificialformpdf' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>ArtificialInseminationPDF</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'consultationformpdf' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>FarmConsultationPDF</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'pregnancyformpdf' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>PregnancyDiagnosisPDF</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'calfregformpdf' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>CalfRegistrationFormPDF</p>
+        </a>
+      </li>
+    </ul>
+  </div>

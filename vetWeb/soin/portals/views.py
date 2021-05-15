@@ -32,7 +32,7 @@ def portal_vet(request):
         'all_vets': vet_officers,
         'count': no_vet_forms
     }
-    return render(request, 'portals/indexVet.html', context)
+    return render(request, 'portals/dashboardVet.html', context)
 
 @user_passes_test(farmer_check, login_url='login')
 def portal_farmer(request):
@@ -40,7 +40,7 @@ def portal_farmer(request):
     context = {
         'all_vets': vet_officers
     }
-    return render(request, 'portals/indexFarmer.html', context)
+    return render(request, 'portals/dashboardFarmer.html', context)
 
 @user_passes_test(student_check, login_url='login')
 def portal_student(request):
@@ -48,7 +48,7 @@ def portal_student(request):
     context = {
         'all_vets': vet_officers
     }
-    return render(request, 'portals/indexStudent.html', context)  
+    return render(request, 'portals/dashboardStudent.html', context)  
 
 
 @user_passes_test(vet_check, login_url='login')

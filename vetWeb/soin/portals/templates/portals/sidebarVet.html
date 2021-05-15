@@ -1,42 +1,65 @@
-<div class="menu-sidebar__content js-scrollbar1">
-    <nav class="navbar-sidebar">
-        <ul class="list-unstyled navbar__list">
-            <li class="active has-sub">
-                <a class="js-arrow" href="#">
-                    <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-            </li>
-            <li>
-                <a href="{% url 'sick-approach' %}">
-                    <i class="far fa-check-square"></i>SickApproachForm</a>
-            </li>
-            <li>
-                <a href="{% url 'dead-approach' %}">
-                    <i class="far fa-check-square"></i>DeadApproachForm</a>
-            </li>
-            <li>
-                <a href="{% url 'surgical-approach' %}">
-                    <i class="far fa-check-square"></i>SurgicalApproachForm</a>
-            </li>
-            <li>
-                <a href="{% url 'deworming' %}">
-                    <i class="far fa-check-square"></i>DewormingForm</a>
-            </li>
-            <li>
-                <a href="{% url 'vaccination' %}">
-                    <i class="far fa-check-square"></i>vaccination_form</a>
-            </li>
-            <li>
-                <a href="{% url 'artificial-insemination' %}">
-                    <i class="far fa-check-square"></i>ArtificialInseminationForm</a>
-            </li>
-            <li>
-                <a href="{% url 'consultation' %}">
-                    <i class="far fa-check-square"></i>FarmConsultationForm</a>
-            </li>
-            <li>
-                <a href="{% url 'pregnancy_diagnosis' %}">
-                    <i class="far fa-check-square"></i>PregnancyDiagnosisForm</a>
-            </li>
-        </ul>
-    </nav>
-</div>
+<div class="logo">
+    <a href="{% url 'index' %}" class="simple-text logo-normal">
+      Soin Veterinary
+    </a>
+  </div>
+  <div class="sidebar-wrapper" id="sidebar-wrapper">
+    <ul class="nav">
+      <li class="active ">
+        <a href="{% url 'vet-portal' %}">
+          <i class="now-ui-icons design_app"></i>
+          <p>Dashboard</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'sick-approach' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>SickApproachForm</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'dead-approach' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>DeadApproachForm</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'surgical-approach' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>SurgicalApproachForm</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'deworming' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>DewormingForm</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'vaccination' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>vaccination_form</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'artificial-insemination' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>ArtificialInseminationForm</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'consultation' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>FarmConsultationForm</p>
+        </a>
+      </li>
+      <li>
+        <a href="{% url 'pregnancy_diagnosis' %}">
+          <i class="now-ui-icons location_map-big"></i>
+          <p>PregnancyDiagnosisForm</p>
+        </a>
+      </li>
+      <li>
+      </li>
+    </ul>
+  </div>
